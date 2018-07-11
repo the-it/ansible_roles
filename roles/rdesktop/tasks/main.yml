@@ -1,0 +1,7 @@
+---
+- name: install
+  apt:
+    name: rdesktop
+    state: latest
+  register: installation
+  become: yes
