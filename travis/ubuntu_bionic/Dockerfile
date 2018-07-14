@@ -2,6 +2,10 @@ FROM ubuntu:bionic
 
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y software-properties-common && rm -rf /var/lib/apt/lists/*
 
+RUN apt install -y init
+ADD bin /bin
+STOPSIGNAL SIGRTMIN+3
+
 RUN apt-add-repository -y ppa:ansible/ansible && apt-get update && apt-get install -y \
     git \
     ansible \
@@ -9,4 +13,5 @@ RUN apt-add-repository -y ppa:ansible/ansible && apt-get update && apt-get insta
 
 RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
-ENTRYPOINT ["/sbin/init"]
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["/sbin/init"]
