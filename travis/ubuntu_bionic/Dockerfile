@@ -1,7 +1,8 @@
 FROM ubuntu:bionic
 
-RUN apt-add-repository -y ppa:ansible/ansible
 RUN apt update && apt dist-upgrade -y
+RUN apt-add-repository -y ppa:ansible/ansible
+RUN apt update
 RUN apt install -y software-properties-common
 RUN apt install -y init
 RUN apt install -y git
