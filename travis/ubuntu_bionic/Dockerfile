@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-RUN apt update && apt dist-upgrade -y && apt install -y software-properties-common init git ansible sudo
+RUN apt update && apt install -y software-properties-common init git ansible sudo
 RUN rm -rf /var/lib/apt/lists/*
 
 ADD bin /bin
