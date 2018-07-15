@@ -14,18 +14,23 @@
   register: cloning
   become: no
 
+- name: Check that the ~/.zshrc exists
+  stat:
+    path: ~/.zshrc
+  register: stat_result
+
 - name: Check whether .zshrc is original
   command: awk /ZSH_THEME=\"robbyrussell\"/ ~/.zshrc
   register: checkoriginalzshrc
   changed_when: False
-  when: cloning is success
+  when: stat_result.stat.exists == True
 
 - name: Creating new ~/.zshrc
   copy:
     content: ""
     dest: ~/.zshrc
     force: yes
-  when: checkoriginalzshrc.stdout is match("ZSH_THEME=\"robbyrussell\"")
+  when: stat_result.stat.exists == False or checkoriginalzshrc.stdout is match("ZSH_THEME=\"robbyrussell\"")
   become: no
 
 - name: Personal configuration
