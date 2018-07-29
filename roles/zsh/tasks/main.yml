@@ -33,15 +33,22 @@
   when: stat_result.stat.exists == False or checkoriginalzshrc.stdout is match("ZSH_THEME=\"robbyrussell\"")
   become: no
 
-- name: Personal configuration
+- name: Basic configuration
   blockinfile:
     path: ~/.zshrc
-    marker: "# {mark} ANSIBLE MANAGED BLOCK "
+    marker: "# {mark} Basic Config "
     content: |
       export ZSH=~/.oh-my-zsh
       ZSH_THEME="ys"
       plugins=(git)
       source $ZSH/oh-my-zsh.sh
+
+- name: Alias configuration
+  blockinfile:
+    path: ~/.zshrc
+    marker: "# {mark} Aliases "
+    content: |
+      loc() { find "$*" -type f -name '*'| xargs wc -l ; }
 
 - name: Check whether zsh is already standard shell
   command: echo $SHELL

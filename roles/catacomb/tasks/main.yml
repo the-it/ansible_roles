@@ -1,0 +1,6 @@
+---
+- name: pip
+  pip:
+    executable: pip3
+    name: catacomb
+  become: yes
