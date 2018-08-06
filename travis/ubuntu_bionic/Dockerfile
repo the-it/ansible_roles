@@ -10,6 +10,7 @@ RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
 RUN adduser --disabled-password --gecos '' docker
 RUN adduser docker sudo
+ENV USER docker
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER docker
