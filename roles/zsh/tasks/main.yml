@@ -56,8 +56,5 @@
   changed_when: False
 
 - name: Change Shell to Zsh
-  expect:
-    command: "chsh -s /bin/zsh"
-    responses:
-      (?i)password: "{{ user_password }}"
+  command: "usermod --shell /bin/zsh $USER"
   when: existing_shell.stdout is not match("/bin/zsh")
