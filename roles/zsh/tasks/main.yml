@@ -51,11 +51,12 @@
       loc() { find "$*" -type f -name '*'| xargs wc -l ; }
 
 - name: Check whether zsh is already standard shell
-  command: echo $SHELL
+  shell: "grep 'erik' /etc/passwd | grep -oh 'zsh'"
   register: existing_shell
+  become: no
   changed_when: False
 
 - name: Change Shell to Zsh
   command: "usermod --shell /bin/zsh $USER"
   become: yes
-  when: existing_shell.stdout is not match("/bin/zsh")
+  when: existing_shell.stdout is not match("zsh")
