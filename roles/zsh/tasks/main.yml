@@ -57,4 +57,5 @@
 
 - name: Change Shell to Zsh
   command: "usermod --shell /bin/zsh $USER"
+  become: yes
   when: existing_shell.stdout is not match("/bin/zsh")
