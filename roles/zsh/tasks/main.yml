@@ -51,7 +51,7 @@
       loc() { find "$*" -type f -name '*'| xargs wc -l ; }
 
 - name: Check whether zsh is already standard shell
-  shell: "grep 'erik' /etc/passwd | grep -oh 'zsh'"
+  shell: "grep $USER /etc/passwd | grep -oh 'zsh'"
   register: existing_shell
   become: no
   changed_when: False
