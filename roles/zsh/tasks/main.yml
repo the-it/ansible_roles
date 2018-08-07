@@ -1,8 +1,10 @@
 ---
 - include_vars: password.yml
 
-- name: Installing Zsh and git
-  apt: pkg=zsh,git state=latest
+- name: Installing zsh
+  apt:
+    name: zsh
+    state: latest
   register: installation
   become: yes
 
