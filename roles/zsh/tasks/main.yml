@@ -1,8 +1,10 @@
 ---
 - include_vars: password.yml
 
-- name: Installing Zsh and git
-  apt: pkg=zsh,git state=latest
+- name: Installing zsh
+  apt:
+    name: zsh
+    state: latest
   register: installation
   become: yes
 
@@ -14,38 +16,51 @@
   register: cloning
   become: no
 
+- name: Check that the ~/.zshrc exists
+  stat:
+    path: ~/.zshrc
+  register: stat_result
+
 - name: Check whether .zshrc is original
   command: awk /ZSH_THEME=\"robbyrussell\"/ ~/.zshrc
   register: checkoriginalzshrc
   changed_when: False
-  when: cloning is success
+  when: stat_result.stat.exists == True
 
 - name: Creating new ~/.zshrc
   copy:
     content: ""
     dest: ~/.zshrc
     force: yes
-  when: checkoriginalzshrc.stdout is match("ZSH_THEME=\"robbyrussell\"")
+  when: stat_result.stat.exists == False or checkoriginalzshrc.stdout is match("ZSH_THEME=\"robbyrussell\"")
   become: no
 
-- name: Personal configuration
+- name: Basic configuration
   blockinfile:
     path: ~/.zshrc
-    marker: "# {mark} ANSIBLE MANAGED BLOCK "
+    marker: "# {mark} Basic Config "
     content: |
       export ZSH=~/.oh-my-zsh
       ZSH_THEME="ys"
       plugins=(git)
       source $ZSH/oh-my-zsh.sh
 
+- name: Alias configuration
+  blockinfile:
+    path: ~/.zshrc
+    marker: "# {mark} Aliases "
+    content: |
+      loc() { find "$*" -type f -name '*'| xargs wc -l ; }
+
 - name: Check whether zsh is already standard shell
-  command: echo $SHELL
+  shell: |
+    grep {{ ansible_user_id }} /etc/passwd | grep -oh 'zsh\|bash'
   register: existing_shell
+  become: no
   changed_when: False
 
 - name: Change Shell to Zsh
-  expect:
-    command: "chsh -s /bin/zsh"
-    responses:
-      (?i)password: "{{ user_password }}"
-  when: existing_shell.stdout is not match("/bin/zsh")
+  shell: |
+    usermod --shell /bin/zsh {{ ansible_user_id }}
+  become: yes
+  when: existing_shell.stdout is not match("zsh")
