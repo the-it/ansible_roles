@@ -19,6 +19,7 @@ script:
   - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 cat /etc/passwd'
   - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --vault-password-file /etc/ansible/password.txt /etc/ansible/all_playbooks.yml --syntax-check'
   - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --vault-password-file /etc/ansible/password.txt /etc/ansible/all_playbooks.yml'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 cat /etc/passwd'
   - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --vault-password-file /etc/ansible/password.txt -v /etc/ansible/all_playbooks.yml | tee output.txt'
   - >
     grep -q 'changed=0.*failed=0' output.txt
