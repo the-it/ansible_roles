@@ -59,6 +59,6 @@
 
 - name: Change Shell to Zsh
   shell: |
-    usermod --shell /bin/zsh $USER
+    usermod --shell /bin/zsh {{ ansible_user_id }}
   become: yes
   when: existing_shell.stdout is not match("zsh")
