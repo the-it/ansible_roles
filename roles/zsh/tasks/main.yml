@@ -51,6 +51,7 @@
     marker: "# {mark} Aliases "
     content: |
       loc() { find "$*" -type f -name '*'| xargs wc -l ; }
+      cheat() { curl cheat.sh/$1 ; }
       df_min() { df | grep -v snap }
       rm_docker_con() { docker rm -f $(docker ps -a -q) }
 
