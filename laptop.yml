@@ -7,6 +7,7 @@
     - {role: zsh, tags: zsh}
 # specials
     - {role: catacomb, tags: catacomb}
+    - {role: cst, tags: cst}
     - {role: googler, tags: googler}
     - {role: imgcat, tags: imgcat}
     - {role: rdesktop, tags: rdesktop}
