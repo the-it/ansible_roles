@@ -1,7 +1,14 @@
 - hosts: localhost
   roles:
     - {role: go, tags: go}
-    - neofetch
+    - {role: neofetch, tags: neofetch}
     #- openvpn???
     - {role: pycp, tags: pycp}
-    - zsh
+    - {role: zsh, tags: zsh}
+# specials
+    - {role: catacomb, tags: catacomb}
+    - {role: googler, tags: googler}
+    - {role: imgcat, tags: imgcat}
+    - {role: rdesktop, tags: rdesktop}
+  #- scc later ... I have to learn some stuff about go package management
+    - {role: wptools, tags: wptools}
