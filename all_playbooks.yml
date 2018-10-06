@@ -1,6 +1,0 @@
----
-- name: Play all available playbookd
-  hosts: localhost
-
-- import_playbook: laptop.yml
-- import_playbook: laptop_specials.yml
