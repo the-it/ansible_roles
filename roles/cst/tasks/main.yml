@@ -1,10 +1,17 @@
 ---
-- name:
-  command: curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && sudo mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
+#- name:
+#  command: curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && sudo mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
 
 - name: install cst
   get_url:
     url: https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64
-    dest: /usr/local/bin/container-structure-test
+    dest: /usr/local/bin/
     mode: 755
+  become: true
+
+- name: make link
+  file:
+    src: "/usr/local/bin/container-structure-test-linux-amd64"
+    dest: "/usr/local/bin/container-structure-test"
+    state: link
   become: true
