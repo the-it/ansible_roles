@@ -1,15 +1,15 @@
 - hosts: localhost
   roles:
+    - {role: catacomb, tags: catacomb}
+    - {role: cst, tags: cst}
     - {role: go, tags: go}
+    - {role: googler, tags: googler}
+    - {role: imgcat, tags: imgcat}
+    - {role: meld, tags: meld}
     - {role: neofetch, tags: neofetch}
     #- openvpn???
     - {role: pycp, tags: pycp}
-    - {role: zsh, tags: zsh}
-# specials
-    - {role: catacomb, tags: catacomb}
-    - {role: cst, tags: cst}
-    - {role: googler, tags: googler}
-    - {role: imgcat, tags: imgcat}
     - {role: rdesktop, tags: rdesktop}
-  #- scc later ... I have to learn some stuff about go package management
+    #- scc later ... I have to learn some stuff about go package management
     - {role: wptools, tags: wptools}
+    - {role: zsh, tags: zsh}
