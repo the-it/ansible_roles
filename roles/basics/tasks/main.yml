@@ -14,13 +14,6 @@
   register: installation
   become: yes
 
-- name: libfuse2
-  apt:
-    name: libfuse2
-    state: latest
-  register: installation
-  become: yes
-
 - name: git
   apt:
     name: git
