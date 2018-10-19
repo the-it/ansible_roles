@@ -16,9 +16,10 @@ script:
   - container_id=$(mktemp)
   - 'echo ${password} > password.txt'
   - 'sudo docker run --user docker --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible:ro ${distribution}-${version}:ansible > "${container_id}"'
+  - 'sudo docker exec "$(cat ${container_id})" ansible-galaxy install -r /etc/ansible/requirements.yml'
   - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --vault-password-file /etc/ansible/password.txt /etc/ansible/laptop.yml --syntax-check'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --vault-password-file /etc/ansible/password.txt /etc/ansible/laptop.yml'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --vault-password-file /etc/ansible/password.txt -v /etc/ansible/laptop.yml | tee output.txt'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci --vault-password-file /etc/ansible/password.txt /etc/ansible/laptop.yml'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci --vault-password-file /etc/ansible/password.txt -v /etc/ansible/laptop.yml | tee output.txt'
   - >
     grep -q 'changed=0.*failed=0' output.txt
     && (echo 'Idempotence test: pass' && exit 0)

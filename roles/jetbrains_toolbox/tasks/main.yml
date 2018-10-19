@@ -1,0 +1,14 @@
+---
+- name: Jetbrains Toolbox
+  block:
+    - name: libfuse2
+      apt:
+        name: libfuse2
+        state: latest
+      register: installation
+      become: yes
+
+    - name: install toolbox
+      import_role:
+        name: jaredhocutt.jetbrains_toolbox
+  tags: no_ci
