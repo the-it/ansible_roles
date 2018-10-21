@@ -1,6 +1,4 @@
 ---
-- include_vars: password.yml
-
 - name: dependencies
   apt:
     name: cimg-dev,libncurses5-dev
