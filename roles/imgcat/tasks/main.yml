@@ -1,6 +1,4 @@
 ---
-- include_vars: password.yml
-
 - name: libncurses5-dev
   apt:
     name: libncurses5-dev

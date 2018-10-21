@@ -1,6 +1,4 @@
 ---
-- include_vars: password.yml
-
 - name: Installing zsh
   apt:
     name: zsh
