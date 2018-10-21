@@ -1,0 +1,14 @@
+---
+- name: install thunderbird
+  apt:
+    name: thunderbird
+    state: latest
+  register: installation
+  become: yes
+
+- name: install lightning
+  apt:
+    name: xul-ext-lightning
+    state: latest
+  register: installation
+  become: yes

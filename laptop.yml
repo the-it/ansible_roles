@@ -12,6 +12,7 @@
     #- openvpn???
     - {role: pycp, tags: pycp}
     - {role: rdesktop, tags: rdesktop}
+    - {role: thunderbird, tags: thunderbird}
     #- scc later ... I have to learn some stuff about go package management
     - {role: wptools, tags: wptools}
     - {role: zsh, tags: zsh}
