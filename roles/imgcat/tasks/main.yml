@@ -1,9 +1,9 @@
 ---
 - include_vars: password.yml
 
-- name: libncurses5-dev
+- name: dependencies
   apt:
-    name: libncurses5-dev
+    name: cimg-dev,libncurses5-dev
     state: latest
   register: installation
   become: yes
