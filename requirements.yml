@@ -1,4 +1,6 @@
 # from galaxy
+- src: andrewrothstein.rust
 - src: jaredhocutt.jetbrains_toolbox
 - src: sansible.golang
+
 

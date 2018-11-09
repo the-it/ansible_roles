@@ -1,0 +1,6 @@
+---
+- name: install rust
+  import_role:
+    name: andrewrothstein.rust
+    rustup_toolchains:
+      - stable
