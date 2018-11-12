@@ -8,11 +8,13 @@
 - name: retrive latest version of terraform
   shell: "curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version' | tr -d '\n'"
   register: terraform_latest_version
+  changed_when: False
   args:
     warn: false
 
 - name: retrive installed version of terraform
   shell: "terraform --version | grep 'Terraform v' | sed 's/Terraform v//' | tr -d '\n'"
+  changed_when: False
   register: terraform_installed_version
 
 - name: Display terraform versions
