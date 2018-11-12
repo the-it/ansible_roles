@@ -1,0 +1,35 @@
+---
+
+- name: Check if terraform exists
+  stat: 
+    path: /usr/local/bin/terraform
+  register: check_terraform_exists
+
+- name: retrive latest version of terraform
+  shell: "curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version' | tr -d '\n'"
+  register: terraform_latest_version
+  args:
+    warn: false
+
+- name: retrive installed version of terraform
+  shell: "terraform --version | grep 'Terraform v' | sed 's/Terraform v//' | tr -d '\n'"
+  register: terraform_installed_version
+
+- name: Display terraform versions
+  debug: msg='installed terraform version is {{terraform_installed_version.stdout}} latest version is {{terraform_latest_version.stdout}}!'
+  
+- name: download terraform
+  get_url:
+    url: "https://releases.hashicorp.com/terraform/{{terraform_latest_version.stdout}}/terraform_{{terraform_latest_version.stdout}}_linux_amd64.zip"
+    dest: /tmp/terraform-latest.zip
+    force_basic_auth: no
+  when: check_terraform_exists.stat.exists == false or 
+        terraform_latest_version.stdout not in terraform_installed_version.stdout
+    
+- name: Unzip downloaded archive
+  unarchive:
+    src: /tmp/terraform-latest.zip
+    dest: /usr/local/bin/
+  become: true
+  when: check_terraform_exists.stat.exists == false or 
+        terraform_latest_version.stdout not in terraform_installed_version.stdout

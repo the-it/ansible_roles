@@ -1,0 +1,7 @@
+[default]
+region=eu-central-1
+output=json
+
+[TST]
+region=eu-central-1
+output=json

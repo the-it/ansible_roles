@@ -12,6 +12,7 @@
     #- openvpn???
     - {role: pycp, tags: pycp}
     - {role: rdesktop, tags: rdesktop}
+    - {role: terraform, tags: terraform}
     - {role: thunderbird, tags: thunderbird}
     #- scc later ... I have to learn some stuff about go package management
     - {role: virtual_box_vagrant, tags: virtual_box_vagrant}
