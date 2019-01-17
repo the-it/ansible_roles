@@ -21,13 +21,6 @@
   register: installation
   become: yes
 
-- name: python3.6
-  apt:
-    name: python3.6
-    state: latest
-  register: installation
-  become: yes
-
 - name: python3.7
   apt:
     name: python3.7
