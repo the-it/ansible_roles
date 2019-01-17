@@ -3,9 +3,9 @@ sudo: required
 
 env:
   - distribution: ubuntu
-    version: bionic
-  - distribution: ubuntu
     version: cosmic
+  - distribution: ubuntu
+    version: disco
 
 services:
   - docker

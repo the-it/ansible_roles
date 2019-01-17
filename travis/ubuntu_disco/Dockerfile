@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:disco
 
 RUN apt update && apt install -y software-properties-common init git ansible sudo
 RUN rm -rf /var/lib/apt/lists/*
