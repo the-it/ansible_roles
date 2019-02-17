@@ -55,7 +55,7 @@
 
 - name: Check whether zsh is already standard shell
   shell: |
-    grep erik /etc/passwd | grep -oh 'zsh\|bash'
+    grep {{ ansible_user_id }} /etc/passwd | grep -oh 'zsh\|bash'
   register: existing_shell
   become: no
   changed_when: False

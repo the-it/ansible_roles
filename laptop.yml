@@ -1,5 +1,4 @@
 - hosts: localhost
-  gather_facts: no
   roles:
     - {role: catacomb, tags: catacomb}
     - {role: cst, tags: cst}
