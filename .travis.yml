@@ -11,16 +11,19 @@ services:
   - docker
 
 before_install:
-  - 'sudo docker pull ${distribution}:${version}'
-  - 'sudo docker build --no-cache --rm --file=travis/${distribution}_${version}/Dockerfile --tag=${distribution}-${version}:ansible travis/${distribution}_${version}'
+  - 'sudo apt install moreutils'
+  - 'sudo docker pull ${distribution}:${version} | ts "[%Y-%m-%d %H:%M:%S]"'
+  - 'sudo docker build --no-cache --rm --file=travis/${distribution}_${version}/Dockerfile --tag=${distribution}-${version}:ansible travis/${distribution}_${version} | ts "[%Y-%m-%d %H:%M:%S]"'
+
+  echo -e "foo\nbar\nbaz" | ts "[%Y-%m-%d %H:%M:%S]"
 
 script:
   - container_id=$(mktemp)
-  - 'sudo docker run --user docker --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible:ro ${distribution}-${version}:ansible > "${container_id}"'
-  - 'sudo docker exec "$(cat ${container_id})" ansible-galaxy install -r /etc/ansible/requirements.yml'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/laptop.yml --syntax-check'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci /etc/ansible/laptop.yml'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci -v /etc/ansible/laptop.yml | tee output.txt'
+  - 'sudo docker run --user docker --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible:ro ${distribution}-${version}:ansible > "${container_id}" | ts "[%Y-%m-%d %H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" ansible-galaxy install -r /etc/ansible/requirements.yml | ts "[%Y-%m-%d %H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/laptop.yml --syntax-check | ts "[%Y-%m-%d %H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci /etc/ansible/laptop.yml | ts "[%Y-%m-%d %H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci -v /etc/ansible/laptop.yml | tee output.txt | ts "[%Y-%m-%d %H:%M:%S]"'
   - >
     grep -q 'changed=0.*failed=0' output.txt
     && (echo 'Idempotence test: pass' && exit 0)
