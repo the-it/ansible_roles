@@ -11,11 +11,9 @@ services:
   - docker
 
 before_install:
-  - 'sudo apt install moreutils'
+  - 'sudo apt-get install moreutils'
   - 'sudo docker pull ${distribution}:${version} | ts "[%Y-%m-%d %H:%M:%S]"'
   - 'sudo docker build --no-cache --rm --file=travis/${distribution}_${version}/Dockerfile --tag=${distribution}-${version}:ansible travis/${distribution}_${version} | ts "[%Y-%m-%d %H:%M:%S]"'
-
-  echo -e "foo\nbar\nbaz" | ts "[%Y-%m-%d %H:%M:%S]"
 
 script:
   - container_id=$(mktemp)
