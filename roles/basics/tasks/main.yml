@@ -14,6 +14,14 @@
   register: installation
   become: yes
 
+- name: standart desktop tools
+  apt:
+    name: ubuntu-desktop
+    state: latest
+  register: installation
+  become: yes
+  tags: no_ci
+
 - name: git
   apt:
     name: git
@@ -24,6 +32,13 @@
 - name: python3.7
   apt:
     name: python3.7
+    state: latest
+  register: installation
+  become: yes
+
+- name: python3.7 venv
+  apt:
+    name: python3.7-venv
     state: latest
   register: installation
   become: yes
