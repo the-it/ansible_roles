@@ -1,8 +1,35 @@
 ---
 
-- name: ngerman
+- name: base
   apt:
-    name: texlive-lang-german
+    name: texlive-latex-base
+    state: latest
+  register: installation
+  become: yes
+
+- name: more stuff
+  apt:
+    name:
+      - texlive-lang-german
+      - texlive-extra-utils
+      - texlive-latex-extra
+      - texlive-fonts-recommended
+      - texlive-font-utils
+      - texlive-pictures
+    state: latest
+  register: installation
+  become: yes
+
+- name: pstricks
+  apt:
+    name: texlive-pstricks
+    state: latest
+  register: installation
+  become: yes
+
+- name: texstudio
+  apt:
+    name: texstudio
     state: latest
   register: installation
   become: yes
