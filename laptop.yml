@@ -7,6 +7,7 @@
     - {role: googler, tags: googler}
     #- {role: imgcat, tags: imgcat} not compatiple with cosmic
     - {role: jetbrains_toolbox, tags: jetbrains_toolbox}
+    - {role: latex, tags: latex}
     - {role: meld, tags: meld}
     - {role: moreutils, tags: moreutils}
     - {role: neofetch, tags: neofetch}
