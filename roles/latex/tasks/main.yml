@@ -1,0 +1,8 @@
+---
+
+- name: ngerman
+  apt:
+    name: texlive-lang-german
+    state: latest
+  register: installation
+  become: yes
