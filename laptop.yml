@@ -3,6 +3,7 @@
     - {role: catacomb, tags: catacomb}
     - {role: cst, tags: cst}
     - {role: dateutils, tags: dateutils}
+    - {role: git, tags: git}
     - {role: go, tags: go}
     - {role: googler, tags: googler}
     #- {role: imgcat, tags: imgcat} not compatiple with cosmic

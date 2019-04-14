@@ -22,13 +22,6 @@
   become: yes
   tags: no_ci
 
-- name: git
-  apt:
-    name: git
-    state: latest
-  register: installation
-  become: yes
-
 - name: python3.7
   apt:
     name: python3.7
