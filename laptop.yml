@@ -12,6 +12,7 @@
     - {role: meld, tags: meld}
     - {role: moreutils, tags: moreutils}
     - {role: neofetch, tags: neofetch}
+    - {role: node_js, tags: node_js}
     #- openvpn???
     - {role: pycp, tags: pycp}
     - {role: rdesktop, tags: rdesktop}
@@ -19,6 +20,5 @@
     - {role: thunderbird, tags: thunderbird}
     #- scc later ... I have to learn some stuff about go package management
     - {role: virtual_box_vagrant, tags: virtual_box_vagrant}
-    - {role: web_dev, tags: web_dev}
     - {role: wptools, tags: wptools}
     - {role: zsh, tags: zsh}
