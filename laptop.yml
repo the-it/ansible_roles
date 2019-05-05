@@ -1,6 +1,7 @@
 - hosts: localhost
   roles:
     - {role: catacomb, tags: catacomb}
+    - {role: chrome, tags: chrome}
     - {role: cst, tags: cst}
     - {role: dateutils, tags: dateutils}
     - {role: go, tags: go}
