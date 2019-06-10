@@ -1,0 +1,19 @@
+---
+
+- name: ubuntu-desktop
+  apt:
+    name: ubuntu-desktop
+    state: latest
+  become: yes
+
+- name: guest additions
+  apt:
+    name:
+      - virtualbox-guest-dkms
+      - virtualbox-guest-utils
+      - virtualbox-guest-x11
+    state: latest
+  become: yes
+
+
+
