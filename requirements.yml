@@ -1,4 +1,5 @@
 # from galaxy
+- src: geerlingguy.nodejs
 - src: jaredhocutt.jetbrains_toolbox
 - src: sansible.golang
 

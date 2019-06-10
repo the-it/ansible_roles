@@ -1,0 +1,6 @@
+---
+- name: install nodejs
+  import_role:
+    name: geerlingguy.nodejs
+  become: true
+  tags: no_ci
