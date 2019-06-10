@@ -9,7 +9,7 @@
 
 - name: build tools
   apt:
-    name: autoconf,make
+    name: autoconf,make,cmake
     state: latest
   register: installation
   become: yes

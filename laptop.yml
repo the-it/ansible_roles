@@ -13,6 +13,7 @@
     - {role: moreutils, tags: moreutils}
     - {role: neofetch, tags: neofetch}
     #- openvpn???
+    - {role: polybar, tags: polybar}
     - {role: pycp, tags: pycp}
     - {role: rdesktop, tags: rdesktop}
     - {role: terraform, tags: terraform}
