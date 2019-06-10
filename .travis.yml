@@ -4,6 +4,8 @@ sudo: required
 env:
   - distribution: ubuntu
     version: disco
+  - distribution: ubuntu
+    version: eoan
 
 services:
   - docker
