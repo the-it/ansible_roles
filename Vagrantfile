@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
   config.vm.define "devbox" do |dev|
-      config.vm.box = "ubuntu/bionic64"
+      config.vm.box = "ubuntu/disco64"
       dev.vm.provider "virtualbox" do |vb|
         vb.gui = true
         vb.cpus = 2
