@@ -8,6 +8,8 @@ Vagrant.configure("2") do |config|
         # more customization options here: https://www.virtualbox.org/manual/ch08.html
         vb.customize ["modifyvm", :id, "--audio", "none"]
         vb.customize ["modifyvm", :id, "--vram", "64"]
+        # vb.customize ["modifyvm", :id, "--uart1", "off" ]
+        vb.customize ["modifyvm", :id, "--uartmode1", "disconnected"]
       end
       dev.vm.provision "shell", path: "vagrant/scripts/pre_provision.sh"
       dev.vm.provision "shell", inline: <<-SHELL
