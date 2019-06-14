@@ -1,0 +1,46 @@
+---
+- name: install visual studio code
+  import_role:
+    name: gantsign.visual-studio-code
+  vars:
+    users:
+      - username: vagrant
+        visual_studio_code_extensions:
+          - blanu.vscode-styled-jsx
+          - christian-kohler.npm-intellisense
+          - christian-kohler.path-intellisense
+          - cmstead.jsrefactor
+          - CoenraadS.bracket-pair-colorizer
+          - dbaeumer.vscode-eslint
+          - DigitalBrainstem.javascript-ejs-support
+          - dsznajder.es7-react-js-snippets
+          - ecmel.vscode-html-css
+          - EditorConfig.EditorConfig
+          - emilast.LogFileHighlighter
+          - eg2.vscode-npm-script
+          - Equinusocio.vsc-material-theme
+          - esbenp.prettier-vscode
+          - formulahendry.auto-close-tag
+          - formulahendry.auto-rename-tag
+          - jpoissonnier.vscode-styled-components
+          - leizongmin.node-module-intellisense
+          - mikestead.dotenv
+          - mohd-akram.vscode-html-format
+          - mrmlnc.vscode-scss
+          - ms-vscode.sublime-keybindings
+          - msjsdiag.debugger-for-chrome
+          - OfHumanBondage.react-proptypes-intellisense
+          - PKief.material-icon-theme
+          - ritwickdey.LiveServer
+          - sleistner.vscode-fileutils
+          - stuart.unique-window-colors
+          - vscode-icons-team.vscode-icons
+          - yzhang.markdown-all-in-one
+          - Zignd.html-css-class-completion
+        visual_studio_code_settings: {
+          "editor.rulers": [80, 100, 120],
+          "editor.renderWhitespace": true,
+          "files.associations": {
+            "Vagrantfile": "ruby"
+          }
+        }
