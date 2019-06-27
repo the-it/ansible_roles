@@ -1,0 +1,10 @@
+- hosts: localhost
+  roles:
+    - {role: chrome, tags: chrome}
+    - {role: devbox_essentials, tags: devbox_essentials}
+    - {role: guake, tags: guake}
+    - {role: node_js, tags: node_js}
+    - visual_studio_code
+    - role: git-clone
+      git_repo: backen-f-r-menschen
+      tags: git
