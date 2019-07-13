@@ -1,6 +1,7 @@
 FROM ubuntu:eoan
 
-RUN apt update && apt install -y software-properties-common init git ansible sudo python
+RUN apt update && apt install -y software-properties-common init git sudo python python-pip
+RUN pip install ansible
 RUN rm -rf /var/lib/apt/lists/*
 
 ADD bin /bin
