@@ -4,11 +4,15 @@
     - user.yml
 
   roles:
+    - {role: autologin, tags: autologin}
     - {role: chrome, tags: chrome}
     - {role: devbox_essentials, tags: devbox_essentials}
     - {role: guake, tags: guake}
     - {role: node_js, tags: node_js}
-    - visual_studio_code
+    - {role: visual_studio_code, tage: visual_studio_code}
     - role: git-clone
       git_repo: backen-f-r-menschen
       tags: git
+    - {role: postman, tage: postman}
+    - {role: remove-unnecessary, tage: remove-unnecessary}
+    - {role: launcher_icons, tage: launcher_icons}
