@@ -9,13 +9,13 @@
   git_config:
     name: user.name
     scope: global
-    value: Erik Sommer
+    value: "{{git_name}}"
 
 - name: user email
   git_config:
     name: user.email
     scope: global
-    value: ersotech@posteo.de
+    value: "{{git_mail}}"
 
 - name: make funky log alias
   git_config:
