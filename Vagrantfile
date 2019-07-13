@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--audio", "none"]
         vb.customize ["modifyvm", :id, "--vram", "64"]
         vb.customize ["modifyvm", :id, "--uartmode1", "disconnected"]
+        vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+        vb.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
       end
       dev.vm.provision "shell", path: "vagrant/scripts/pre_provision.sh"
       dev.vm.provision "shell", inline: <<-SHELL
