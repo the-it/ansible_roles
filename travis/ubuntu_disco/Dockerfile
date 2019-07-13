@@ -14,6 +14,6 @@ ENV USER docker
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER docker
-WORKDIR /home/docker
+WORKDIR /docker/home
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/sbin/init"]
