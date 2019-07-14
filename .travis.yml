@@ -1,5 +1,6 @@
 ---
 sudo: required
+dist: xenial
 
 env:
   - distribution: ubuntu
@@ -8,9 +9,6 @@ env:
   - distribution: ubuntu
     playbook: devbox
     version: disco
-  - distribution: ubuntu
-    playbook: laptop
-    version: eoan
 
 services:
   - docker

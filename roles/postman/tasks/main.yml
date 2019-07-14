@@ -4,3 +4,4 @@
     name:
       - postman
   become: true
+  tags: no_ci

@@ -1,19 +1,21 @@
 ---
-- name: Replace autologin lines in /etc/gdm3/custom.conf
-  replace:
-    path: /etc/gdm3/custom.conf
-    regexp: '{{ item.regex }}'
-    replace: '{{ item.replace }}'
-  with_items:
-    - { regex: '#  AutomaticLoginEnable = true', replace: '  AutomaticLoginEnable = true' }
-    - { regex: '#  AutomaticLogin = user1', replace: '  AutomaticLogin = vagrant' }
-  become: true
+- block:
+  - name: Replace autologin lines in /etc/gdm3/custom.conf
+    replace:
+      path: /etc/gdm3/custom.conf
+      regexp: '{{ item.regex }}'
+      replace: '{{ item.replace }}'
+    with_items:
+      - { regex: '#  AutomaticLoginEnable = true', replace: '  AutomaticLoginEnable = true' }
+      - { regex: '#  AutomaticLogin = user1', replace: '  AutomaticLogin = vagrant' }
+    become: true
 
-- name: Check if lock screen enabled
-  shell: gsettings get org.gnome.desktop.lockdown disable-lock-screen
-  register: lock_screen
-  changed_when: false
+  - name: Check if lock screen enabled
+    shell: gsettings get org.gnome.desktop.lockdown disable-lock-screen
+    register: lock_screen
+    changed_when: false
 
-- name: Disable lock screen
-  command: gsettings set org.gnome.desktop.lockdown disable-lock-screen 'true'
-  when: lock_screen.stdout != 'true'
+  - name: Disable lock screen
+    command: gsettings set org.gnome.desktop.lockdown disable-lock-screen 'true'
+    when: lock_screen.stdout != 'true'
+  tags: no_ci

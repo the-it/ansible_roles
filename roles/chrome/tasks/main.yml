@@ -21,4 +21,6 @@
    - name: Install Google Chrome
      apt: pkg=google-chrome-stable state=present
   become: True
+  # todo: test or replace
+  tags: no_ci
 

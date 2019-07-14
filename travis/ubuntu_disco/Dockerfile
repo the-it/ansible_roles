@@ -7,6 +7,8 @@ RUN rm -rf /var/lib/apt/lists/*
 ADD bin /bin
 STOPSIGNAL SIGRTMIN+3
 RUN useradd -ms /bin/bash newuser
+RUN mkdir /etc/ansible
+RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
 RUN adduser --disabled-password --gecos '' docker
 RUN adduser docker sudo
@@ -14,6 +16,6 @@ ENV USER docker
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER docker
-WORKDIR /docker/home
+WORKDIR /home/docker
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/sbin/init"]
