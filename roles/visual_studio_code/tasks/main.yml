@@ -1,5 +1,6 @@
 ---
 - name: install visual studio code
+  tags: no_ci
   import_role:
     name: gantsign.visual-studio-code
   vars:

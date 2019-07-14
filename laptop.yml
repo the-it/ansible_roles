@@ -1,4 +1,8 @@
 - hosts: localhost
+
+  vars_files:
+    - user.yml
+
   roles:
     - {role: catacomb, tags: catacomb}
     - {role: chrome, tags: chrome}
@@ -22,4 +26,7 @@
     #- scc later ... I have to learn some stuff about go package management
     - {role: virtual_box_vagrant, tags: virtual_box_vagrant}
     - {role: wptools, tags: wptools}
-    - {role: zsh, tags: zsh}
+    - role: zsh
+      vars:
+        theme: "ys"
+      tags: zsh

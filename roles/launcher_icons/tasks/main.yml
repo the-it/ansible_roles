@@ -1,0 +1,18 @@
+---
+- name: pin some programms to the launcher
+  import_role:
+    name: gantsign.pin-to-launcher
+  vars:
+    pin_to_launcher: gnome
+    pin_to_launcher_favorites:
+      # You'll probably need these apps pinned when using Gnome.
+      - application: 'ubiquity.desktop' # The application search/menu
+        when_desktop: gnome
+      - application: 'org.gnome.Nautilus.desktop' # The file browser
+        when_desktop: gnome
+      # Pin the applications of your choice below.
+      #
+      # Tip: run `gsettings get org.gnome.shell favorite-apps` to
+      # see the apps you currently have pinned.
+      - application: 'firefox.desktop'
+      - application: 'google-chrome.desktop'
