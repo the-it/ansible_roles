@@ -1,0 +1,6 @@
+---
+- name: Install
+  become: true
+  apt:
+    name: tree
+    state: latest

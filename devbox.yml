@@ -16,3 +16,8 @@
     - {role: postman, tage: postman}
     - {role: remove-unnecessary, tage: remove-unnecessary}
     - {role: launcher_icons, tage: launcher_icons}
+    - {role: tree, tage: tree}
+    - role: zsh
+      vars:
+        theme: "awesomepanda"
+      tags: zsh
