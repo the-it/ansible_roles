@@ -15,7 +15,7 @@
       when: check_path.stat.exists
 
     - git:
-        repo: 'https://github.com/L-M-K-B/backen-f-r-menschen.git'
+        repo: 'https://github.com/{{ github_user }}/{{ git_repo }}.git'
         dest: ~/workspace/{{ git_repo }}
         update: no
       when: check_path.stat.exists == false

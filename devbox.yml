@@ -12,6 +12,7 @@
     - {role: visual_studio_code, tage: visual_studio_code}
     - role: git-clone
       git_repo: backen-f-r-menschen
+      github_user: L-M-K-B
       tags: git
     - {role: postman, tage: postman}
     - {role: remove-unnecessary, tage: remove-unnecessary}
