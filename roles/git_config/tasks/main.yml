@@ -1,0 +1,24 @@
+---
+- name: user name
+  git_config:
+    name: user.name
+    scope: global
+    value: "{{git_name}}"
+
+- name: user email
+  git_config:
+    name: user.email
+    scope: global
+    value: "{{git_mail}}"
+
+- name: make funky log alias
+  git_config:
+    name: alias.lfi
+    scope: global
+    value: log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+- name: Create a directory for git repos
+  file:
+    path: ~/workspace
+    state: directory
+    mode: '0755'

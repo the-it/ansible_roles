@@ -1,2 +1,5 @@
 .idea/*
+copy_files/*
+.vagrant/*
 *.retry
+user.yml

@@ -1,0 +1,15 @@
+---
+- name: Remove a list of packages
+  apt:
+    name: "{{ packages }}"
+    state: absent
+  vars:
+    packages:
+      - libreoffice*
+      - simple-scan
+      - rhythmbox
+      - transmission-common
+      - transmission-gtk
+      - thunderbird
+  become: true
+        

@@ -1,0 +1,26 @@
+---
+- name: Clone Repository {{ git_repo }}
+  block:
+    - name: Check required vars
+      assert:
+        that:
+          - "git_repo is defined"
+
+    - name: Check if path exists
+      stat: path=~/workspace/{{ git_repo }}
+      register: check_path
+
+    - name: Check Result
+      debug: msg='GIT-Repo already exists. Nothing to do!'
+      when: check_path.stat.exists
+
+    - git:
+        repo: 'https://github.com/{{ github_user }}/{{ git_repo }}.git'
+        dest: ~/workspace/{{ git_repo }}
+        update: no
+      when: check_path.stat.exists == false
+
+  tags:
+    - git-repo
+    - git
+

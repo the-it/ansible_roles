@@ -1,0 +1,15 @@
+---
+- name: Install
+  become: true
+  apt:
+    name: guake
+    state: latest
+
+- name: Autostart
+  become: true
+  file:
+    src: /usr/share/applications/guake.desktop
+    dest: /etc/xdg/autostart/guake.desktop
+    state: link
+
+

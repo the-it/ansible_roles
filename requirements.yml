@@ -1,4 +1,12 @@
 # from galaxy
+- src: gantsign.pin-to-launcher
+  version: 3.0.1
+- src: gantsign.visual-studio-code
+  version: 6.3.0
+- src: geerlingguy.nodejs
+  version: 5.0.0
 - src: jaredhocutt.jetbrains_toolbox
+  version: f5794ee625caf0d735c981e2dd71e4aee5343788
 - src: sansible.golang
+  version: v2.0.1
 
