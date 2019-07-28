@@ -1,0 +1,5 @@
+- hosts: localhost
+
+  roles:
+    - ws_thebotit
+    - jetbrains_toolbox
