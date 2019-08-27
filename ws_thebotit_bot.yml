@@ -1,0 +1,6 @@
+- hosts: localhost
+
+  roles:
+    - ws_thebotit_bot
+    - role: geerlingguy.ntp
+      ntp_timezone: Europe/Berlin
