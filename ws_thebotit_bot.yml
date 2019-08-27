@@ -1,5 +1,6 @@
 - hosts: localhost
-
+  # for dev puposes
+  # pushd ansible_roles && git checkout feature/set_up_little_bot && git pull && popd && ansible-playbook ansible_roles/ws_thebotit_bot.yml
   roles:
     - ws_thebotit_bot
     - role: geerlingguy.ntp
