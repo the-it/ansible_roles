@@ -1,4 +1,10 @@
 ---
+- name: build tools
+  apt:
+    name: autoconf,make
+    state: latest
+  become: yes
+
 - name: dependencies
   apt:
     name: cimg-dev,libncurses5-dev

@@ -1,3 +1,3 @@
 ---
 dependencies:
-  - role: basics
+  - role: build_tools

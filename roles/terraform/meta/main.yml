@@ -1,7 +1,6 @@
 ---
 dependencies:
 - aws_cli
-- basics
 - curl
 - jq
 - unzip
