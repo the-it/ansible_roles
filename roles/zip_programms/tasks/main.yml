@@ -1,0 +1,6 @@
+---
+- name: zip programs
+  apt:
+    name: rar,unrar,unzip
+    state: latest
+  become: yes

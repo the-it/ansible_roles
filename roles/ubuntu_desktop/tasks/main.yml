@@ -1,0 +1,7 @@
+---
+- name: standart desktop tools
+  apt:
+    name: ubuntu-desktop
+    state: latest
+  become: yes
+  tags: no_ci
