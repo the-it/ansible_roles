@@ -10,4 +10,11 @@
   register: python_installed_version
 
 - name: Display python versions
-  debug: msg='installed python version is {{python_installed_version.stdout}}, version should be {{ python_version }}!'
+  debug: msg='installed python version is {{ python_installed_version.stdout }}, version should be {{ python_version }}!'
+
+- name: Installing Python from source
+  block:
+    - name: Doing stuff
+      debug: msg='Doing'
+  when: check_custom_python_exists.stat.exists == false or
+    python_installed_version.stdout not in python_version
