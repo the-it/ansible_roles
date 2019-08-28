@@ -24,8 +24,10 @@
     - {role: terraform, tags: terraform}
     - {role: thunderbird, tags: thunderbird}
     #- scc later ... I have to learn some stuff about go package management
+    - {role: ubuntu_desktop, tags: ubuntu_desktop}
     - {role: virtual_box_vagrant, tags: virtual_box_vagrant}
     - {role: wptools, tags: wptools}
+    - {role: zip_programms, tags: zip_programms}
     - role: zsh
       vars:
         theme: "ys"

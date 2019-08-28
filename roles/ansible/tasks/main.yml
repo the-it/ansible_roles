@@ -1,0 +1,5 @@
+---
+- name: ansible
+  pip:
+    name: ansible
+  become: yes

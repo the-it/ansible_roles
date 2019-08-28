@@ -6,9 +6,6 @@ env:
   - distribution: ubuntu
     playbook: laptop
     version: disco
-  - distribution: ubuntu
-    playbook: devbox
-    version: disco
 
 services:
   - docker
