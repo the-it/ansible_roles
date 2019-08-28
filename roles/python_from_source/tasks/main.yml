@@ -1,18 +1,13 @@
 ---
-- name: pip3
-  apt:
-    name: python3-pip
-    state: latest
-  become: yes
+- name: Check if terraform exists
+  stat:
+    path: /usr/local/bin/python3
+  register: check_custom_python_exists
 
-- name: python3.7
-  apt:
-    name: python3.7
-    state: latest
-  become: yes
+- name: retrive installed version of python
+  shell: "python3 --version | grep 'Python ' | sed 's/Python //' | tr -d '\n'"
+  changed_when: False
+  register: python_installed_version
 
-- name: python3.7 venv
-  apt:
-    name: python3.7-venv
-    state: latest
-  become: yes
+- name: Display python versions
+  debug: msg='installed python version is {{python_installed_version.stdout}}, version should be {{ python_version }}!'
