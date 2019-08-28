@@ -10,7 +10,7 @@
     - {role: guake, tags: guake}
     - {role: node_js, tags: node_js}
     - {role: visual_studio_code, tage: visual_studio_code}
-    - role: git-clone
+    - role: git_clone
       git_repo: backen-f-r-menschen
       github_user: L-M-K-B
       tags: git
