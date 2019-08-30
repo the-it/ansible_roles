@@ -45,7 +45,7 @@
   - name: Make Symlinks
     file:
       src: "/usr/local/opt/python-{{ python_version }}/bin/{{ item }}{{ python_version[:3] }}"
-      dest: "/usr/bin/{{ item }}{{ python_version[:3] }}"
+      dest: "/usr/local/bin/{{ item }}{{ python_version[:3] }}"
       state: link
     loop:
       - pydoc
@@ -54,5 +54,12 @@
       - pip
     become: yes
 
+  - name: Make Master Symlink
+    file:
+      src: "/usr/bin/local/python3.7"
+      dest: "/usr/bin/local/python3"
+      state: link
+    become: yes
+
   when: check_custom_python_exists.stat.exists == false or
-    python_installed_version.stdout not in python_version
+    python_installed_version.stdout != python_version
