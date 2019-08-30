@@ -1,16 +1,8 @@
 ---
-- name: Check if terraform exists
-  stat:
-    path: /usr/local/bin/python3
-  register: check_custom_python_exists
-
 - name: retrive installed version of python
   shell: "python3 --version | grep 'Python ' | sed 's/Python //' | tr -d '\n'"
   changed_when: False
   register: python_installed_version
-
-- debug:
-    msg: "Exists '{{ check_custom_python_exists.stat.exists }}', version '{{ python_installed_version.stdout }}', target '{{ python_version }}'"
 
 - name: Display python versions
   debug: msg='installed python version is {{ python_installed_version.stdout }}, version should be {{ python_version }}!'
@@ -50,6 +42,7 @@
       src: "/usr/local/opt/python-{{ python_version }}/bin/{{ item }}{{ python_version[:3] }}"
       dest: "/usr/local/bin/{{ item }}{{ python_version[:3] }}"
       state: link
+      force: yes
     loop:
       - pydoc
       - python
