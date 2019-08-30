@@ -41,15 +41,16 @@
 
 - name: Make Symlinks
   file:
-    src: "/usr/local/opt/python-{{ python_version }}/bin/{{ item }}{{ python_version[:3] }}"
-    dest: "/usr/local/bin/{{ item }}{{ python_version[:3] }}"
+    src: "/usr/local/opt/python-{{ python_version }}/bin/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
     state: link
     force: yes
   loop:
-    - pydoc
-    - python
-    - pyvenv-
-    - pip
+    - "pydoc{{ python_version[:3] }}"
+    - "python{{ python_version[:3] }}"
+    - "python{{ python_version[:3] }}m"
+    - "pyvenv-{{ python_version[:3] }}"
+    - "pip{{ python_version[:3] }}"
   become: yes
 
 - name: Make Master Symlink
