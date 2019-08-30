@@ -27,17 +27,17 @@
       dest: /tmp//Python-{{ python_version }}
       remote_src: yes
 
-  - name: Build and Install Python
-    block:
-    - name: Configure
-      command: configure
+  - name: Configure
+    command: configure
+    chdir: /tmp//Python-{{ python_version }}
 
-    - name: Make
-      command: "make -j 4"
+  - name: Make
+    command: "make -j 4"
+    chdir: /tmp//Python-{{ python_version }}
 
-    - name: Install
-      command: "make altinstall"
-      become: yes
+  - name: Install
+    command: "make altinstall"
+    become: yes
     chdir: /tmp//Python-{{ python_version }}
 
   when: check_custom_python_exists.stat.exists == false or
