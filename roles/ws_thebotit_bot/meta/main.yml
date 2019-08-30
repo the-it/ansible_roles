@@ -1,7 +1,6 @@
 ---
 dependencies:
   - git
-  - python3
   - role: git_clone
     git_repo: WS_THEbotIT
     github_user: the-it
