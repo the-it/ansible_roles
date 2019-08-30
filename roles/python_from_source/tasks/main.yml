@@ -37,24 +37,24 @@
       chdir: /tmp//Python-{{ python_version }}
     become: yes
 
-  - name: Make Symlinks
-    file:
-      src: "/usr/local/opt/python-{{ python_version }}/bin/{{ item }}{{ python_version[:3] }}"
-      dest: "/usr/local/bin/{{ item }}{{ python_version[:3] }}"
-      state: link
-      force: yes
-    loop:
-      - pydoc
-      - python
-      - pyvenv-
-      - pip
-    become: yes
-
-  - name: Make Master Symlink
-    file:
-      src: "/usr/local/bin/python3.7"
-      dest: "/usr/local/bin/python3"
-      state: link
-    become: yes
-
   when: python_installed_version.stdout != python_version
+
+- name: Make Symlinks
+  file:
+    src: "/usr/local/opt/python-{{ python_version }}/bin/{{ item }}{{ python_version[:3] }}"
+    dest: "/usr/local/bin/{{ item }}{{ python_version[:3] }}"
+    state: link
+    force: yes
+  loop:
+    - pydoc
+    - python
+    - pyvenv-
+    - pip
+  become: yes
+
+- name: Make Master Symlink
+  file:
+    src: "/usr/local/bin/python3.7"
+    dest: "/usr/local/bin/python3"
+    state: link
+  become: yes
