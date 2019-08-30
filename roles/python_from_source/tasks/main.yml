@@ -14,7 +14,31 @@
 
 - name: Installing Python from source
   block:
-    - name: Doing stuff
-      debug: msg='Doing'
+  chdir: /tmp//Python-{{ python_version }}
+  - name: Install required software
+    apt:
+      name: build-essential,tk-dev,libncurses5-dev,libncursesw5-dev,libreadline6-dev,libdb5.3-dev,libgdbm-dev,libsqlite3-dev,libssl-dev,libbz2-dev,libexpat1-dev,liblzma-dev,zlib1g-dev,libffi-dev
+      state: latest
+      register: installation
+      become: yes
+
+  - name: Download sources
+    unarchive:
+      src: https://www.python.org/ftp/python/{{ python_version }}/Python-{{ python_version }}.tar.xz
+      dest: /tmp//Python-{{ python_version }}
+      remote_src: yes
+
+  - name: Build and Install Python
+    block:
+    - name: Configure
+      command: configure
+
+    - name: Make
+      command: "make -j 4"
+
+    - name: Install
+      command: "make altinstall"
+      become: yes
+
   when: check_custom_python_exists.stat.exists == false or
     python_installed_version.stdout not in python_version
