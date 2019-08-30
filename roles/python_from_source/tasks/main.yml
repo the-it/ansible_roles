@@ -28,17 +28,20 @@
       remote_src: yes
 
   - name: Configure
-    command: configure
-    chdir: /tmp//Python-{{ python_version }}
+    shell: configure
+    args:
+      chdir: /tmp//Python-{{ python_version }}
 
   - name: Make
-    command: "make -j 4"
-    chdir: /tmp//Python-{{ python_version }}
+    shell: "make -j 4"
+    args:
+      chdir: /tmp//Python-{{ python_version }}
 
   - name: Install
-    command: "make altinstall"
+    shell: "make altinstall"
+    args:
+      chdir: /tmp//Python-{{ python_version }}
     become: yes
-    chdir: /tmp//Python-{{ python_version }}
 
   when: check_custom_python_exists.stat.exists == false or
     python_installed_version.stdout not in python_version
