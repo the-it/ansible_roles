@@ -27,7 +27,7 @@
       remote_src: yes
 
   - name: Configure
-    shell: ./configure
+    shell: "./configure --prefix=/usr/local/opt/python-{{ python_version }}"
     args:
       chdir: /tmp//Python-{{ python_version }}
 
@@ -40,6 +40,18 @@
     shell: "make altinstall"
     args:
       chdir: /tmp//Python-{{ python_version }}
+    become: yes
+
+  - name: Make Symlinks
+    file:
+      src: "/usr/local/opt/python-{{ python_version }}/bin/{{ item }}{{ python_version[:3] }}"
+      dest: "/usr/bin/{{ item }}{{ python_version[:3] }}"
+      state: link
+    loop:
+      - pydoc
+      - python
+      - pyvenv-
+      - pip
     become: yes
 
   when: check_custom_python_exists.stat.exists == false or
