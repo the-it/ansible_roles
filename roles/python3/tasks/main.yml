@@ -1,18 +1,7 @@
 ---
-- name: pip3
+- name: apt
   apt:
-    name: python3-pip
+    name: python3-pip,python3.7,python3.7-venv
     state: latest
   become: yes
 
-- name: python3.7
-  apt:
-    name: python3.7
-    state: latest
-  become: yes
-
-- name: python3.7 venv
-  apt:
-    name: python3.7-venv
-    state: latest
-  become: yes
