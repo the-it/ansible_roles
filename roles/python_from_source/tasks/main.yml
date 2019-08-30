@@ -9,6 +9,9 @@
   changed_when: False
   register: python_installed_version
 
+- debug:
+    msg: "Exists '{{ check_custom_python_exists }}', version '{{ python_installed_version.stdout }}', target '{{ python_version }}'"
+
 - name: Display python versions
   debug: msg='installed python version is {{ python_installed_version.stdout }}, version should be {{ python_version }}!'
 
