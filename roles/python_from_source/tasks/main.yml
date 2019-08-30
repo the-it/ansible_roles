@@ -37,6 +37,12 @@
       chdir: /tmp//Python-{{ python_version }}
     become: yes
 
+  - name: Remove Sources
+    file:
+      path: /tmp/Python-{{ python_version }}
+      state: absent
+    become: yes
+
   when: python_installed_version.stdout != python_version
 
 - name: Make Symlinks
