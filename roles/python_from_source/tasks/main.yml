@@ -59,8 +59,8 @@
 
   - name: Make Master Symlink
     file:
-      src: "/usr/bin/local/python3.7"
-      dest: "/usr/bin/local/python3"
+      src: "/usr/local/bin/python3.7"
+      dest: "/usr/local/bin/python3"
       state: link
     become: yes
 
