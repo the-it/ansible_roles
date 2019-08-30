@@ -64,5 +64,4 @@
       state: link
     become: yes
 
-  when: not check_custom_python_exists.stat.exists or
-    python_installed_version.stdout != python_version
+  when: python_installed_version.stdout != python_version
