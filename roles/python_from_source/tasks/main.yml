@@ -14,7 +14,6 @@
 
 - name: Installing Python from source
   block:
-  chdir: /tmp//Python-{{ python_version }}
   - name: Install required software
     apt:
       name: build-essential,tk-dev,libncurses5-dev,libncursesw5-dev,libreadline6-dev,libdb5.3-dev,libgdbm-dev,libsqlite3-dev,libssl-dev,libbz2-dev,libexpat1-dev,liblzma-dev,zlib1g-dev,libffi-dev
@@ -39,6 +38,7 @@
     - name: Install
       command: "make altinstall"
       become: yes
+    chdir: /tmp//Python-{{ python_version }}
 
   when: check_custom_python_exists.stat.exists == false or
     python_installed_version.stdout not in python_version
