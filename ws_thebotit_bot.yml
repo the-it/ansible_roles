@@ -8,3 +8,4 @@
     - role: geerlingguy.ntp
       ntp_timezone: Europe/Berlin
       become: yes
+      tags: no_ci
