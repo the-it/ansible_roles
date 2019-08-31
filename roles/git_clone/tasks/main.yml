@@ -7,7 +7,7 @@
           - "git_repo is defined"
 
     - name: Check if path exists
-      stat: path=~/workspace/{{ git_repo }}
+      stat: path={{ repo_parent }}/{{ git_repo }}
       register: check_path
 
     - name: Check Result
@@ -16,7 +16,7 @@
 
     - git:
         repo: 'https://github.com/{{ github_user }}/{{ git_repo }}.git'
-        dest: ~/workspace/{{ git_repo }}
+        dest: '{{ repo_parent }}/{{ git_repo }}'
         update: no
       when: check_path.stat.exists == false
 
