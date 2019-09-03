@@ -18,3 +18,13 @@
   args:
     chdir: "~/WS_THEbotIT"
   when: "git@github.com:the-it/WS_THEbotIT.git" not in remote_out.stdout
+
+- name: Set git repo properties
+  git_config:
+    name: user.email
+    repo: /etc
+    scope: local
+    value: 'root@{{ ansible_fqdn }}'
+  with_items:
+    - { name: 'user.name', value: "{{ ocn_user }}" }
+    - { name: 'user.email', value: "{{ otto_email }}"}
