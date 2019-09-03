@@ -6,3 +6,8 @@
     hour: "0"
     job: "/home/pi/WS_THEbotIT/scripts/starter.sh >> /home/pi/.wiki_bot/cron.log 2>&1"
   tags: no_ci
+
+- name: Change Origin
+  shell: "git remote set-url origin git@github.com:the-it/WS_THEbotIT.git"
+  args:
+    chdir: "/home/pi/WS_THEbotIT"
