@@ -11,3 +11,4 @@
   shell: "git remote set-url origin git@github.com:the-it/WS_THEbotIT.git"
   args:
     chdir: "~/WS_THEbotIT"
+  tags: no_ci
