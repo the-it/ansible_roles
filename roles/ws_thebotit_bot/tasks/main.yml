@@ -10,4 +10,4 @@
 - name: Change Origin
   shell: "git remote set-url origin git@github.com:the-it/WS_THEbotIT.git"
   args:
-    chdir: "/home/pi/WS_THEbotIT"
+    chdir: "~/WS_THEbotIT"
