@@ -21,10 +21,10 @@
 
 - name: Set git repo properties
   git_config:
-    name: user.email
-    repo: /etc
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    repo: "~/WS_THEbotIT"
     scope: local
-    value: 'root@{{ ansible_fqdn }}'
   with_items:
-    - { name: 'user.name', value: "{{ ocn_user }}" }
-    - { name: 'user.email', value: "{{ otto_email }}"}
+    - { name: 'user.name', value: "THEbotIT" }
+    - { name: 'user.email', value: "ws_thebotit@pi"}
