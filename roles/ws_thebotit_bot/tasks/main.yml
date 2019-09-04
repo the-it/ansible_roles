@@ -17,7 +17,7 @@
   shell: "git remote set-url origin git@github.com:the-it/WS_THEbotIT.git"
   args:
     chdir: "~/WS_THEbotIT"
-  when: "git@github.com:the-it/WS_THEbotIT.git" not in remote_out.stdout
+  when: remote_out.stdout.find("git@github.com:the-it/WS_THEbotIT.git") == -1
 
 - name: Set git repo properties
   git_config:
