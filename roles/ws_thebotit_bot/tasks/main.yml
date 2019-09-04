@@ -12,6 +12,7 @@
   args:
     chdir: "~/WS_THEbotIT"
   register: remote_out
+  changed_when: False
 
 - name: Change Origin
   shell: "git remote set-url origin git@github.com:the-it/WS_THEbotIT.git"
