@@ -6,9 +6,6 @@ env:
   - distribution: ubuntu
     playbook: laptop
     version: disco
-  - distribution: ubuntu
-    playbook: ws_thebotit_bot
-    version: disco
 
 services:
   - docker
