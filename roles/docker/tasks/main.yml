@@ -1,0 +1,10 @@
+---
+- name: install go
+  import_role:
+    name: geerlingguy.docker
+  vars:
+    docker_users:
+      - "{{ ansible_env.USER }}"
+    docker_install_compose: false
+  become: yes
+  tags: no_ci
