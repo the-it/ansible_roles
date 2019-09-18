@@ -7,3 +7,4 @@
       - "{{ ansible_env.USER }}"
     docker_install_compose: false
   become: yes
+  tags: no_ci
