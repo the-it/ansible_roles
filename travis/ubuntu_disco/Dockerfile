@@ -34,8 +34,8 @@ RUN apt install -y software-properties-common git sudo python python-pip
 RUN pip install ansible
 # RUN rm -rf /var/lib/apt/lists/*
 
-# ADD bin /bin
-# STOPSIGNAL SIGRTMIN+3
+ADD bin /bin
+STOPSIGNAL SIGRTMIN+3
 # RUN useradd -ms /bin/bash newuser
 RUN mkdir /etc/ansible
 RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
@@ -47,6 +47,6 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER docker
 WORKDIR /home/docker
-# ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["/lib/systemd/systemd"]
