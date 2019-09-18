@@ -2,7 +2,7 @@
 - src: gantsign.pin-to-launcher
   version: 3.0.1
 - src: gantsign.visual-studio-code
-  version: 6.3.0
+  version: 6.3.1
 - src: geerlingguy.nodejs
   version: 5.0.0
 - src: geerlingguy.ntp
