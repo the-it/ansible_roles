@@ -17,3 +17,9 @@
 - name: Install all current Python versions
   include: install_local_python.yml
   with_items: "{{ versions.stdout.split(',') }}"
+  tags: no_ci
+
+# this is for ci, because building all Python versions all the time take 10 min +
+- name: Install all current Python versions
+  include: install_local_python.yml
+  with_items: 3.8.0
