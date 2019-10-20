@@ -6,6 +6,9 @@ env:
   - distribution: ubuntu
     playbook: laptop
     version: disco
+  - distribution: ubuntu
+    playbook: laptop
+    version: eoan
 
 services:
   - docker
