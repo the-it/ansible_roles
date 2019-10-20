@@ -22,6 +22,7 @@
     - {role: node_js, tags: node_js}
     #- openvpn???
     - {role: pycp, tags: pycp}
+    - {role: python_from_source, tags: python_from_source}
     - {role: rdesktop, tags: rdesktop}
     - {role: terraform, tags: terraform}
     - {role: thunderbird, tags: thunderbird}
