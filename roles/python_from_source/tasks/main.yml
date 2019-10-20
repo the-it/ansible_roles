@@ -4,11 +4,16 @@
     state: latest
   become: yes
 
+- name: Install pyversion_info
+  pip:
+    name: pyversion-info
+    executable: pip3
+
+- name: get currently supported Python versions
+  script: files/current_python.py
+  changed_when: False
+  register: versions
+
 - name: Install all current Python versions
   include: install_local_python.yml
-  with_items:
-    - 3.8.0
-    - 3.7.4
-    - 3.6.8
-    - 3.5.7
-    - 2.7.16
+  with_items: "{{ versions.stdout.split(',') }}"
