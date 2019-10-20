@@ -4,7 +4,7 @@
   roles:
     - ws_thebotit_bot
     - role: python_from_source_bot
-      python_version: "3.7.4"
+      python_version: "3.8.0"
     - role: geerlingguy.ntp
       ntp_timezone: Europe/Berlin
       become: yes
