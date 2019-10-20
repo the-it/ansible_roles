@@ -3,7 +3,7 @@
   # pushd ansible_roles && git checkout feature/set_up_little_bot && git pull && popd && ansible-playbook ansible_roles/ws_thebotit_bot.yml
   roles:
     - ws_thebotit_bot
-    - role: python_from_source
+    - role: python_from_source_bot
       python_version: "3.7.4"
     - role: geerlingguy.ntp
       ntp_timezone: Europe/Berlin

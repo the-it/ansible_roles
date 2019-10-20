@@ -1,0 +1,67 @@
+---
+- name: retrive installed version of python
+  shell: "python3 --version | grep 'Python ' | sed 's/Python //' | tr -d '\n'"
+  changed_when: False
+  register: python_installed_version
+
+- name: Display python versions
+  debug: msg='installed python version is {{ python_installed_version.stdout }}, version should be {{ python_version }}!'
+
+- name: Installing Python from source
+  block:
+  - name: Install required software
+    apt:
+      name: build-essential,tk-dev,libncurses5-dev,libncursesw5-dev,libreadline6-dev,libdb5.3-dev,libgdbm-dev,libsqlite3-dev,libssl-dev,libbz2-dev,libexpat1-dev,liblzma-dev,zlib1g-dev,libffi-dev
+      state: latest
+    become: yes
+
+  - name: Download sources
+    unarchive:
+      src: https://www.python.org/ftp/python/{{ python_version }}/Python-{{ python_version }}.tar.xz
+      dest: /tmp/
+      remote_src: yes
+
+  - name: Configure
+    shell: "./configure --prefix=/usr/local/opt/python-{{ python_version }}"
+    args:
+      chdir: /tmp//Python-{{ python_version }}
+
+  - name: Make
+    shell: "make -j 4"
+    args:
+      chdir: /tmp//Python-{{ python_version }}
+
+  - name: Install
+    shell: "make altinstall"
+    args:
+      chdir: /tmp//Python-{{ python_version }}
+    become: yes
+
+  - name: Remove Sources
+    file:
+      path: /tmp/Python-{{ python_version }}
+      state: absent
+    become: yes
+
+  when: python_installed_version.stdout != python_version
+
+- name: Make Symlinks
+  file:
+    src: "/usr/local/opt/python-{{ python_version }}/bin/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
+    state: link
+    force: yes
+  loop:
+    - "pydoc{{ python_version[:3] }}"
+    - "python{{ python_version[:3] }}"
+    - "python{{ python_version[:3] }}m"
+    - "pyvenv-{{ python_version[:3] }}"
+    - "pip{{ python_version[:3] }}"
+  become: yes
+
+- name: Make Master Symlink
+  file:
+    src: "/usr/local/bin/python{{ python_version[:3] }}"
+    dest: "/usr/local/bin/python3"
+    state: link
+  become: yes
