@@ -8,6 +8,7 @@
   pip:
     name: pyversion-info
     executable: pip3
+  become: yes
 
 - name: get currently supported Python versions
   script: files/current_python.py
