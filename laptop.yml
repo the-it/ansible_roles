@@ -19,7 +19,7 @@
     - {role: meld, tags: meld}
     - {role: moreutils, tags: moreutils}
     - {role: neofetch, tags: neofetch}
-    - {role: node_js, tags: node_js}
+    #- {role: node_js, tags: node_js}
     #- openvpn???
     - {role: pycp, tags: pycp}
     - {role: python_from_source, tags: python_from_source}
