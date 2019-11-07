@@ -3,6 +3,7 @@
   apt:
     name: python-jmespath
     state: latest
+  become: yes
 
 - name: Jetbrains Toolbox
   block:

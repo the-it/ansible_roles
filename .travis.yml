@@ -15,7 +15,6 @@ services:
 
 before_install:
   - 'sudo apt-get install moreutils'
-  - 'cp user.yml.example user.yml'
   - 'sudo docker pull ${distribution}:${version} | ts "[%H:%M:%S]"'
   - 'sudo docker build --no-cache --rm --file=travis/${distribution}_${version}/Dockerfile --tag=${distribution}-${version}:ansible travis/${distribution}_${version} | ts "[%H:%M:%S]"'
 
