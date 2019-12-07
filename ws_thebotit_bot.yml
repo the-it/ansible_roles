@@ -9,3 +9,4 @@
       ntp_timezone: Europe/Berlin
       become: yes
       tags: no_ci
+    - pi-hole
