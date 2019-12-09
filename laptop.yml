@@ -5,7 +5,7 @@
     - {role: chrome, tags: chrome}
     - {role: cst, tags: cst}
     - {role: dateutils, tags: dateutils}
-    #- {role: docker, tags: docker}
+    - {role: docker, tags: docker}
     - {role: fluxgui, tags: fluxgui}
     - {role: git, tags: git}
     - {role: go, tags: go}
@@ -16,7 +16,7 @@
     - {role: meld, tags: meld}
     - {role: moreutils, tags: moreutils}
     - {role: neofetch, tags: neofetch}
-    #- {role: node_js, tags: node_js}
+    - {role: node_js, tags: node_js}
     #- openvpn???
     - {role: pycp, tags: pycp}
     - {role: python_from_source, tags: python_from_source}
