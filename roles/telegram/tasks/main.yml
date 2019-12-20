@@ -1,0 +1,5 @@
+---
+- name: install telegram
+  snap:
+    name: telegram-desktop
+  become: yes

@@ -3,13 +3,13 @@
   version: 3.0.1
 - src: gantsign.visual-studio-code
   version: 6.3.1
-- src: geerlingguy.docker
-  version: 2.5.3
 - src: geerlingguy.nodejs
   version: 5.0.0
 - src: geerlingguy.ntp
   version: 1.6.4
 - src: jaredhocutt.jetbrains_toolbox
   version: f5794ee625caf0d735c981e2dd71e4aee5343788
+- src: oefenweb.slack
+  version: v3.1.2
 - src: sansible.golang
   version: v2.0.1

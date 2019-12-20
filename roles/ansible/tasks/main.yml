@@ -2,4 +2,5 @@
 - name: ansible
   pip:
     name: ansible
+    executable: pip3
   become: yes

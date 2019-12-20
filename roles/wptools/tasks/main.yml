@@ -9,4 +9,5 @@
 - name: pip
   pip:
     name: wptools
+    executable: pip3
   become: yes
