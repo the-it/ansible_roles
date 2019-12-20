@@ -4,3 +4,4 @@
     name: autoconf,make
     state: latest
   become: yes
+  tags: no_ci
