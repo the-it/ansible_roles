@@ -1,4 +1,10 @@
 ---
+- name: Install jmespath
+  apt:
+    name: python-jmespath
+    state: latest
+  become: yes
+
 - name: Jetbrains Toolbox
   block:
     - name: libfuse2

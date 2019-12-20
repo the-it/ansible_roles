@@ -1,13 +1,12 @@
 - hosts: localhost
 
-  vars_files:
-    - user.yml
-
   roles:
     - {role: catacomb, tags: catacomb}
     - {role: chrome, tags: chrome}
     - {role: cst, tags: cst}
     - {role: dateutils, tags: dateutils}
+    #- {role: docker, tags: docker}
+    - {role: fluxgui, tags: fluxgui}
     - {role: git, tags: git}
     - {role: go, tags: go}
     - {role: googler, tags: googler}
@@ -17,17 +16,17 @@
     - {role: meld, tags: meld}
     - {role: moreutils, tags: moreutils}
     - {role: neofetch, tags: neofetch}
-    - {role: node_js, tags: node_js}
+    #- {role: node_js, tags: node_js}
     #- openvpn???
     - {role: polybar, tags: polybar}
     - {role: pycp, tags: pycp}
+    - {role: python_from_source, tags: python_from_source}
     - {role: rdesktop, tags: rdesktop}
     - {role: terraform, tags: terraform}
     - {role: thunderbird, tags: thunderbird}
     #- scc later ... I have to learn some stuff about go package management
+    - {role: ubuntu_desktop, tags: ubuntu_desktop}
     - {role: virtual_box_vagrant, tags: virtual_box_vagrant}
     - {role: wptools, tags: wptools}
-    - role: zsh
-      vars:
-        theme: "ys"
-      tags: zsh
+    - {role: zip_programms, tags: zip_programms}
+    - {role: zsh, tags: zsh}

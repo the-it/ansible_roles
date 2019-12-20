@@ -1,0 +1,31 @@
+---
+- name: Cron Entry for the nightly run
+  cron:
+    name: "run bot it"
+    minute: "0"
+    hour: "0"
+    job: "/home/pi/WS_THEbotIT/scripts/starter.sh >> /home/pi/.wiki_bot/cron.log 2>&1"
+  tags: no_ci
+
+- name: Read Origin
+  shell: "git remote -v"
+  args:
+    chdir: "~/WS_THEbotIT"
+  register: remote_out
+  changed_when: False
+
+- name: Change Origin
+  shell: "git remote set-url origin git@github.com:the-it/WS_THEbotIT.git"
+  args:
+    chdir: "~/WS_THEbotIT"
+  when: remote_out.stdout.find("git@github.com:the-it/WS_THEbotIT.git") == -1
+
+- name: Set git repo properties
+  git_config:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    repo: "~/WS_THEbotIT"
+    scope: local
+  with_items:
+    - { name: 'user.name', value: "THEbotIT" }
+    - { name: 'user.email', value: "ws_thebotit@pi"}

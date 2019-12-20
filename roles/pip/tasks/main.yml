@@ -1,0 +1,6 @@
+---
+- name: pip
+  apt:
+    name: python-pip
+    state: latest
+  become: yes

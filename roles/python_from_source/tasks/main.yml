@@ -1,0 +1,26 @@
+- name: Install required software
+  apt:
+    name: build-essential,tk-dev,libncurses5-dev,libncursesw5-dev,libreadline6-dev,libdb5.3-dev,libgdbm-dev,libsqlite3-dev,libssl-dev,libbz2-dev,libexpat1-dev,liblzma-dev,zlib1g-dev,libffi-dev
+    state: latest
+  become: yes
+
+- name: Install pyversion_info
+  pip:
+    name: pyversion-info
+    executable: pip3
+  become: yes
+
+- name: get currently supported Python versions
+  script: files/current_python.py
+  changed_when: False
+  register: versions
+
+- name: Install all current Python versions
+  include: install_local_python.yml
+  with_items: "{{ versions.stdout.split(',') }}"
+  tags: no_ci
+
+# this is for ci, because building all Python versions all the time take 10 min +
+- name: Install all current Python versions
+  include: install_local_python.yml
+  with_items: 3.8.0
