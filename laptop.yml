@@ -22,7 +22,7 @@
     - {role: python_from_source, tags: python_from_source}
     - {role: rdesktop, tags: rdesktop}
     - {role: slack, tags: slack}
-    - {role: telegram, tags: telegram}
+    - {role: telegram, tags: [telegram, no_ci]}
     - {role: terraform, tags: terraform}
     - {role: thunderbird, tags: thunderbird}
     #- scc later ... I have to learn some stuff about go package management
