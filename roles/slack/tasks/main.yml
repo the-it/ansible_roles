@@ -1,0 +1,6 @@
+---
+- name: install slack
+  import_role:
+    name: oefenweb.slack
+  become: yes
+  tags: no_ci

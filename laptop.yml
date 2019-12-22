@@ -5,22 +5,24 @@
     - {role: chrome, tags: chrome}
     - {role: cst, tags: cst}
     - {role: dateutils, tags: dateutils}
-    #- {role: docker, tags: docker}
+    - {role: docker, tags: docker}
     - {role: fluxgui, tags: fluxgui}
     - {role: git, tags: git}
     - {role: go, tags: go}
     - {role: googler, tags: googler}
-    #- {role: imgcat, tags: imgcat} not compatiple with cosmic
+    - {role: htop, tags: htop}
     - {role: jetbrains_toolbox, tags: jetbrains_toolbox}
     - {role: latex, tags: latex}
     - {role: meld, tags: meld}
     - {role: moreutils, tags: moreutils}
     - {role: neofetch, tags: neofetch}
-    #- {role: node_js, tags: node_js}
+    - {role: node_js, tags: node_js}
     #- openvpn???
     - {role: pycp, tags: pycp}
     - {role: python_from_source, tags: python_from_source}
     - {role: rdesktop, tags: rdesktop}
+    - {role: slack, tags: slack}
+    - {role: telegram, tags: [telegram, no_ci]}
     - {role: terraform, tags: terraform}
     - {role: thunderbird, tags: thunderbird}
     #- scc later ... I have to learn some stuff about go package management
