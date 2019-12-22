@@ -10,6 +10,7 @@
     - {role: git, tags: git}
     - {role: go, tags: go}
     - {role: googler, tags: googler}
+    - {role: htop, tags: htop}
     - {role: jetbrains_toolbox, tags: jetbrains_toolbox}
     - {role: latex, tags: latex}
     - {role: meld, tags: meld}
