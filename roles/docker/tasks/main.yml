@@ -12,7 +12,7 @@
 
 - name: Ensure docker users are added to the docker group.
   user:
-    name: "erik"
+    name: "{{ ansible_env.USER  }}"
     groups: docker
     append: true
   become: true
