@@ -2,6 +2,7 @@
 
   roles:
     - {role: catacomb, tags: catacomb}
+    - {role: cdk, tags: cdk}
     - {role: chrome, tags: chrome}
     - {role: cst, tags: cst}
     - {role: dateutils, tags: dateutils}
