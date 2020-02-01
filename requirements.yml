@@ -13,3 +13,5 @@
   version: v3.1.2
 - src: sansible.golang
   version: v2.0.1
+- src: https://github.com/angristan/ansible-yarn
+  version: master
