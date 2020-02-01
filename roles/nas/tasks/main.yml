@@ -1,0 +1,23 @@
+---
+- name: Create mount points
+  file:
+    src: '/mnt/{{ item }}'
+    state: directory
+    mode: '0755'
+    owner: root
+  become: yes
+  loop:
+    - 'data_erik'
+    - 'media_erik'
+    - 'shared'
+    - 'temp_erik'
+
+- name: mount nas directories
+  mount:
+    path: /mnt/dvd
+    src: /dev/sr0
+    fstype: iso9660
+    opts: ro,noauto
+    state: present
+  become: yes
+  tags: no_ci
