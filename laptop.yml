@@ -7,7 +7,6 @@
     - cst
     - dateutils
     - docker
-    - fluxgui
     - git
     - go
     - googler
@@ -17,6 +16,7 @@
     - meld
     - moreutils
     - neofetch
+    - night_light
     - node_js
     #- openvpn???
     - pycp
