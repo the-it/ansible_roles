@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:devel
 
 RUN apt update && apt install -y software-properties-common init git sudo python3 python3-pip
 RUN pip3 install ansible

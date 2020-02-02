@@ -7,7 +7,7 @@ env:
     version: eoan
   - distribution: ubuntu
     playbook: laptop
-    version: focal
+    version: devel
 
 services:
   - docker
@@ -22,9 +22,9 @@ script:
   - 'sudo docker run --user docker --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible:ro ${distribution}-${version}:ansible > "${container_id}" | ts "[%H:%M:%S]"'
   - 'sudo docker exec "$(cat ${container_id})" ansible-galaxy install -vvv -r /etc/ansible/requirements.yml | ts "[%H:%M:%S]"'
   - 'sudo docker exec "$(cat ${container_id})" ln -s /etc/ansible/user.yml.example /home/docker/user.yml'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/${playbook}.yml --syntax-check | ts "[%H:%M:%S]"'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci /etc/ansible/${playbook}.yml | ts "[%H:%M:%S]"'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci -v /etc/ansible/${playbook}.yml | tee output.txt | ts "[%H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -e \'ansible_python_interpreter=/usr/bin/python3\' /etc/ansible/${playbook}.yml --syntax-check | ts "[%H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -e \'ansible_python_interpreter=/usr/bin/python3\' --skip-tags no_ci /etc/ansible/${playbook}.yml | ts "[%H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -e \'ansible_python_interpreter=/usr/bin/python3\' --skip-tags no_ci -v /etc/ansible/${playbook}.yml | tee output.txt | ts "[%H:%M:%S]"'
   - >
     grep -q 'changed=0.*failed=0' output.txt
     && (echo 'Idempotence test: pass' && exit 0)
