@@ -3,4 +3,4 @@
   import_role:
     name: geerlingguy.nodejs
   become: true
-  tags: no_ci
+  # tags: no_ci
