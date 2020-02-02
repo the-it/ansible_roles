@@ -3,11 +3,11 @@ dist: xenial
 
 env:
   - version: eoan
-  - version: devel
+  - version: focal
 
 jobs:
   allow_failures:
-  - env: version=devel
+  - env: version=focal
 
 services:
   - docker
