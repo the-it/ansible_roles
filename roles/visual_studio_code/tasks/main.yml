@@ -14,6 +14,7 @@
           - CoenraadS.bracket-pair-colorizer
           - dbaeumer.vscode-eslint
           - DigitalBrainstem.javascript-ejs-support
+          - donjayamanne.githistory
           - dsznajder.es7-react-js-snippets
           - ecmel.vscode-html-css
           - EditorConfig.EditorConfig
