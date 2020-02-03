@@ -3,3 +3,10 @@
   snap:
     name: telegram-desktop
   become: yes
+
+- name: add to autostart
+  include_role:
+    name: auto_start
+  vars:
+    program: telegram-desktop
+    exec: /snap/bin/telegram-desktop

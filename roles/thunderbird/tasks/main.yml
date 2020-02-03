@@ -12,3 +12,10 @@
     state: latest
   register: installation
   become: yes
+
+- name: add to autostart
+  include_role:
+    name: auto_start
+  vars:
+    program: thunderbird
+    exec: /usr/bin/thunderbird
