@@ -1,0 +1,14 @@
+---
+- name: Check if slack exists
+  stat:
+    path: /usr/bin/slack
+  register: check_slack_exists
+
+- name: install slack
+  import_role:
+    name: oefenweb.slack
+  vars:
+    slack_version: 4.2.0
+  become: yes
+  tags: no_ci
+  when: check_slack_exists.stat.exists == false

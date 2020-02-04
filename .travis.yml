@@ -1,29 +1,30 @@
 ---
-sudo: required
 dist: xenial
 
 env:
-  - distribution: ubuntu
-    playbook: laptop
-    version: disco
+  - version: eoan
+  - version: focal
+
+jobs:
+  allow_failures:
+  - env: version=focal
 
 services:
   - docker
 
 before_install:
   - 'sudo apt-get install moreutils'
-  - 'cp user.yml.example user.yml'
-  - 'sudo docker pull ${distribution}:${version} | ts "[%H:%M:%S]"'
-  - 'sudo docker build --no-cache --rm --file=travis/${distribution}_${version}/Dockerfile --tag=${distribution}-${version}:ansible travis/${distribution}_${version} | ts "[%H:%M:%S]"'
+  - 'sudo docker pull ubuntu:${version} | ts "[%H:%M:%S]"'
+  - 'sudo docker build --no-cache --rm --file=travis/ubuntu_${version}/Dockerfile --tag=ubuntu-${version}:ansible travis/ubuntu_${version} | ts "[%H:%M:%S]"'
 
 script:
   - container_id=$(mktemp)
-  - 'sudo docker run --user docker --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible:ro ${distribution}-${version}:ansible > "${container_id}" | ts "[%H:%M:%S]"'
+  - 'sudo docker run --user docker --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible:ro ubuntu-${version}:ansible > "${container_id}" | ts "[%H:%M:%S]"'
   - 'sudo docker exec "$(cat ${container_id})" ansible-galaxy install -vvv -r /etc/ansible/requirements.yml | ts "[%H:%M:%S]"'
   - 'sudo docker exec "$(cat ${container_id})" ln -s /etc/ansible/user.yml.example /home/docker/user.yml'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/${playbook}.yml --syntax-check | ts "[%H:%M:%S]"'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci /etc/ansible/${playbook}.yml | ts "[%H:%M:%S]"'
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook --skip-tags no_ci -v /etc/ansible/${playbook}.yml | tee output.txt | ts "[%H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -e ansible_python_interpreter=/usr/bin/python3 /etc/ansible/laptop.yml --syntax-check | ts "[%H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -e ansible_python_interpreter=/usr/bin/python3 --skip-tags no_ci /etc/ansible/laptop.yml | ts "[%H:%M:%S]"'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -e ansible_python_interpreter=/usr/bin/python3 --skip-tags no_ci -v /etc/ansible/laptop.yml | tee output.txt | ts "[%H:%M:%S]"'
   - >
     grep -q 'changed=0.*failed=0' output.txt
     && (echo 'Idempotence test: pass' && exit 0)

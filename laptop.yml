@@ -1,35 +1,37 @@
 - hosts: localhost
 
-  vars_files:
-    - user.yml
-
   roles:
-    - {role: catacomb, tags: catacomb}
-    - {role: chrome, tags: chrome}
-    - {role: cst, tags: cst}
-    - {role: dateutils, tags: dateutils}
-    - {role: fluxgui, tags: fluxgui}
-    - {role: git, tags: git}
-    - {role: go, tags: go}
-    - {role: googler, tags: googler}
-    #- {role: imgcat, tags: imgcat} not compatiple with cosmic
-    - {role: jetbrains_toolbox, tags: jetbrains_toolbox}
-    - {role: latex, tags: latex}
-    - {role: meld, tags: meld}
-    - {role: moreutils, tags: moreutils}
-    - {role: neofetch, tags: neofetch}
-    - {role: node_js, tags: node_js}
+    - apt_update
+    - catacomb
+    - cdk
+    - chrome
+    - cst
+    - dateutils
+    - docker
+    - git
+    - go
+    - googler
+    - htop
+    - jetbrains_toolbox
+    - latex
+    - meld
+    - moreutils
+    - neofetch
+    - night_light
+    - node_js
     #- openvpn???
-    - {role: pycp, tags: pycp}
-    - {role: rdesktop, tags: rdesktop}
-    - {role: terraform, tags: terraform}
-    - {role: thunderbird, tags: thunderbird}
+    - pycp
+    - python_from_source
+    - rdesktop
+    - slack
+    - telegram
+    - terraform
+    - tree
+    - thunderbird
     #- scc later ... I have to learn some stuff about go package management
-    - {role: ubuntu_desktop, tags: ubuntu_desktop}
-    - {role: virtual_box_vagrant, tags: virtual_box_vagrant}
-    - {role: wptools, tags: wptools}
-    - {role: zip_programms, tags: zip_programms}
-    - role: zsh
-      vars:
-        theme: "ys"
-      tags: zsh
+    - ubuntu_desktop
+    - virtual_box_vagrant
+    - visual_studio_code
+    - wptools
+    - zip_programms
+    - zsh

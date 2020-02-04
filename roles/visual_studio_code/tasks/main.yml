@@ -5,7 +5,7 @@
     name: gantsign.visual-studio-code
   vars:
     users:
-      - username: vagrant
+      - username:  "{{ ansible_env.USER  }}"
         visual_studio_code_extensions:
           - blanu.vscode-styled-jsx
           - christian-kohler.npm-intellisense

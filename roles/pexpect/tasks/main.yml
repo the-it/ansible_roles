@@ -3,5 +3,6 @@
 - name: pexpect
   pip:
     name: pexpect
+    executable: pip3
   become: yes
 
