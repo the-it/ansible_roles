@@ -1,0 +1,6 @@
+---
+- name: install yarn
+  import_role:
+    name: ansible-yarn
+  become: true
+  # tags: no_ci

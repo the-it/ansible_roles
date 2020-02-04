@@ -1,0 +1,7 @@
+---
+- name: install create-react-tool
+  npm:
+    name: create-react-app
+    global: yes
+    state: latest
+  become: true

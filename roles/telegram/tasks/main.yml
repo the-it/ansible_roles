@@ -3,3 +3,12 @@
   snap:
     name: telegram-desktop
   become: yes
+  # todo: needs systemd as daemon in testing :-(
+  tags: no_ci
+
+- name: add to autostart
+  include_role:
+    name: auto_start
+  vars:
+    program: telegram-desktop
+    exec: /snap/bin/telegram-desktop
