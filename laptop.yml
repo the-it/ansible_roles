@@ -20,6 +20,7 @@
     - night_light
     - node_js
     #- openvpn???
+    - polybar
     - pycp
     - python_from_source
     - rdesktop

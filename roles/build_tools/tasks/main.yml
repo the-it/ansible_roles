@@ -1,7 +1,7 @@
 ---
 - name: build tools
   apt:
-    name: autoconf,make,build-essential
+    name: autoconf,make,cmake,build-essential
     state: latest
   become: yes
   tags: no_ci

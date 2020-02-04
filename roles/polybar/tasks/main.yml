@@ -1,0 +1,54 @@
+- name: Install packages for polybar
+  apt:
+    state: latest
+    name:
+      - libcairo2-dev
+      - libxcb-composite0-dev
+      - libxcb-ewmh-dev
+      - libxcb-icccm4-dev
+      - libxcb-image0-dev
+      - libxcb-randr0-dev
+      - libxcb-util0-dev
+      - libxcb-xkb-dev
+      - libxcb-xrm-dev
+      - libx11-xcb-dev
+      - libasound2-dev
+      - libpulse-dev
+      - libiw-dev
+      - ttf-unifont
+      - pkg-config
+      - python-xcbgen
+      - xcb-proto
+  become: yes
+
+- name: Cloning  polybar repo
+  git:
+    repo=https://github.com/polybar/polybar.git
+    dest=/tmp/polybar
+  register: cloning
+  become: no
+
+- block:
+  - name: Create build directory
+    file:
+      path: /tmp/polybar/build
+      state: directory
+      mode: '0755'
+
+  - name: cmake
+    shell: cmake ..
+    args:
+      chdir: /tmp/polybar/build
+
+  - name: install
+    command: make install
+    args:
+      chdir: /tmp/polybar/build
+    become: yes
+  when: cloning.changed
+
+- name: Create config directory
+  file:
+    path: ~/.config/polybar/
+    state: directory
+    mode: '0755'
