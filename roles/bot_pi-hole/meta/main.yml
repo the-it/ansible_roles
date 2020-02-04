@@ -1,0 +1,4 @@
+---
+dependencies:
+  - bot_docker
+  - git

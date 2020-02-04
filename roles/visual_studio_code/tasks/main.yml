@@ -5,7 +5,7 @@
     name: gantsign.visual-studio-code
   vars:
     users:
-      - username: vagrant
+      - username:  "{{ ansible_env.USER  }}"
         visual_studio_code_extensions:
           - blanu.vscode-styled-jsx
           - christian-kohler.npm-intellisense
@@ -14,6 +14,7 @@
           - CoenraadS.bracket-pair-colorizer
           - dbaeumer.vscode-eslint
           - DigitalBrainstem.javascript-ejs-support
+          - donjayamanne.githistory
           - dsznajder.es7-react-js-snippets
           - ecmel.vscode-html-css
           - EditorConfig.EditorConfig
@@ -28,11 +29,9 @@
           - mikestead.dotenv
           - mohd-akram.vscode-html-format
           - mrmlnc.vscode-scss
-          - ms-vscode.sublime-keybindings
           - msjsdiag.debugger-for-chrome
           - OfHumanBondage.react-proptypes-intellisense
           - PKief.material-icon-theme
-          - ritwickdey.LiveServer
           - sleistner.vscode-fileutils
           - stuart.unique-window-colors
           - vscode-icons-team.vscode-icons

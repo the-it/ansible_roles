@@ -1,0 +1,7 @@
+---
+- name: install aws-cdk
+  npm:
+    name: aws-cdk
+    global: yes
+    state: latest
+  become: true

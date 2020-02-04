@@ -1,0 +1,23 @@
+---
+- name: add repo
+  apt_repository:
+    repo: ppa:remmina-ppa-team/remmina-next
+    state: present
+  become: true
+
+- name: apt install
+  apt:
+    name: remmina
+    state: present
+  become: true
+
+- name: make config dir
+  file:
+    path: "/home/{{ ansible_user_id }}/.local/share/remmina"
+    state: directory
+
+- name: make work file
+  file:
+    path: "/home/{{ ansible_user_id }}/.local/share/remmina/1549796375018.remmina"
+    src: files/1549796375018.remmina
+    state: file

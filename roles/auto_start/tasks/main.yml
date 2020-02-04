@@ -1,0 +1,12 @@
+---
+- name: make auto start entry for {{ program }}
+  blockinfile:
+    path: "~/.config/autostart/{{ program }}.desktop"
+    create: yes
+    block: |
+      [Desktop Entry]
+      Name={{ program }}
+      Exec={{ exec }}
+      Type=Application
+
+

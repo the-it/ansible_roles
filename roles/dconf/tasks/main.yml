@@ -1,0 +1,6 @@
+---
+- name: install gsutil
+  pip:
+    name: psutil
+    executable: pip3
+  become: yes

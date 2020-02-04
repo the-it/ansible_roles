@@ -1,0 +1,13 @@
+---
+- name: install snapd
+  apt:
+    name=snapd
+    state=present
+  become: yes
+
+- name: Alias configuration
+  blockinfile:
+    path: ~/.zshrc
+    marker: "# {mark} add snap to path "
+    content: |
+      PATH=$PATH:/snap/bin

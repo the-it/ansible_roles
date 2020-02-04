@@ -1,0 +1,12 @@
+---
+- name: install firefox
+  apt:
+    name: firefox
+  become: yes
+
+- name: add to autostart
+  include_role:
+    name: auto_start
+  vars:
+    program: firefox
+    exec: "firefox https://trello.com/b/nQlBq5Ys/tasks"
