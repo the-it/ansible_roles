@@ -5,6 +5,7 @@
     - catacomb
     - cdk
     - chrome
+    - cloc
     - cst
     - dateutils
     - docker
