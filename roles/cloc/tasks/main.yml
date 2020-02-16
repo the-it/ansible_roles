@@ -1,0 +1,6 @@
+---
+- name: Install cloc
+  become: true
+  apt:
+    name: cloc
+    state: present
