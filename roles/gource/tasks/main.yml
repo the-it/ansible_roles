@@ -1,0 +1,6 @@
+---
+- name: Install gource
+  become: true
+  apt:
+    name: gource
+    state: present
