@@ -1,0 +1,7 @@
+jupyter_notebook:
+  image: kidig/rpi-jupyter-lab
+  container_name: jupyter
+  volumes:
+    - /home/pi/jupyter/notebooks:/root/notebooks
+  ports:
+    - "8888:8888"

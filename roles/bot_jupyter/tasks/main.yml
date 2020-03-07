@@ -1,0 +1,17 @@
+- name: Create jupyter dir
+  file:
+    path: ~/jupyter/notebooks
+    recurse: yes
+    state: directory
+
+- name: Create compose file
+  copy:
+    path: files/docker-compose
+    dest: ~/jupyter/docker-compose
+    state: directory
+
+- name: starts pi-hole docker @reboot"
+  cron:
+    name: "start jupyter notebook server at startup"
+    special_time: reboot
+    job: "cd ~/jupyter && docker-compose up -d"

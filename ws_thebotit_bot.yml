@@ -10,3 +10,4 @@
       become: yes
       tags: no_ci
     - bot_pi-hole
+    - bot_jupyter
