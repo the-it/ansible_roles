@@ -8,7 +8,6 @@
   copy:
     src: files/docker-compose
     dest: ~/jupyter/docker-compose
-    state: directory
 
 - name: starts pi-hole docker @reboot"
   cron:
