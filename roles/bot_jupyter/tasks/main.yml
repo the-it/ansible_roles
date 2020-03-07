@@ -6,7 +6,7 @@
 
 - name: Create compose file
   copy:
-    path: files/docker-compose
+    src: files/docker-compose
     dest: ~/jupyter/docker-compose
     state: directory
 
