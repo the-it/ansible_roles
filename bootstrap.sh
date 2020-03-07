@@ -23,7 +23,8 @@ fi
 pushd $REPO_PATH || exit
   git reset --hard
   git checkout $BRANCH
+  git pull
+  ansible-galaxy install -r "$REPO_PATH/requirements.yml"
+  ansible-playbook "$REPO_PATH/$PLAYBOOK.yml"
 popd || exit
-ansible-galaxy install -r "$REPO_PATH/requirements.yml"
-ansible-playbook "$REPO_PATH/$PLAYBOOK.yml"
 set +x
