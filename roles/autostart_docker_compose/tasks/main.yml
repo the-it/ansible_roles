@@ -2,7 +2,7 @@
 - name: put systemd unit file in place
   template:
     src: templates/docker_compose.service
-    dest: "/usr/lib/systemd/user/{{ service_name }}_docker_compose.service"
+    dest: "/etc/systemd/system/{{ service_name }}_docker_compose.service"
   become: yes
 
 - name: enable and restart systemd service
