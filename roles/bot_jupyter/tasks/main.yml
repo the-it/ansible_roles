@@ -1,0 +1,17 @@
+- name: Create jupyter dir
+  file:
+    path: ~/jupyter/notebooks
+    recurse: yes
+    state: directory
+
+- name: Create compose file
+  copy:
+    src: files/docker-compose
+    dest: ~/jupyter/docker-compose
+
+- name: Create auto start
+  include_role:
+    name: autostart_docker_compose
+  vars:
+    service_name: jupyter_notebook
+    docker_compose_path: "{{ lookup('env','HOME') }}/jupyter"
