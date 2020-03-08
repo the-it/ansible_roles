@@ -1,4 +1,4 @@
 - hosts: localhost
 
   roles:
-    - firefox
+    - bot_jupyter
