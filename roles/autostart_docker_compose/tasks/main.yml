@@ -5,4 +5,11 @@
     dest: "/etc/systemd/user/{{ service_name }}_docker_compose.service"
   become: yes
 
-- name: start systemd service
+- name: enable and restart systemd service
+  systemd:
+    name: "{{ service_name }}_docker_compose"
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
+
+
