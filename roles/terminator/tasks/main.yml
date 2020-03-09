@@ -1,0 +1,6 @@
+---
+- name: Install
+  become: true
+  apt:
+    name: terminator
+    state: latest

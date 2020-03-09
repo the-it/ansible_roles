@@ -27,6 +27,7 @@
     - rdesktop
     - slack
     - telegram
+    - terminator
     - terraform
     - tree
     - thunderbird
