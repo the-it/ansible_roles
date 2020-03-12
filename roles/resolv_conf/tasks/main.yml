@@ -1,0 +1,13 @@
+---
+- name: install resolv conv
+  apt:
+    name: resolvconf
+  become: yes
+
+- name: enable resolv conv service
+  systemd:
+    name: resolvconf.service
+    state: started
+    enabled: yes
+  become: yes
+  tags: no_ci

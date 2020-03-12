@@ -1,0 +1,3 @@
+---
+dependencies:
+  - role: resolv_conf

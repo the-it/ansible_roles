@@ -1,0 +1,29 @@
+---
+- name: add otto dns to resolv conf templates
+  blockinfile:
+    path: /etc/resolvconf/resolv.conf.d/tail
+    marker: "# {mark} ANSIBLE MANAGED BLOCK otto_dns"
+    block: |
+      options rotate
+      options timeout:1
+      search ov.otto.de
+      nameserver 10.79.255.100
+      nameserver 10.79.255.200
+  become: yes
+  register: changed_resolv_conf
+
+- name: restart resolv conv service
+  systemd:
+    name: resolvconf.service
+    state: restarted
+  become: yes
+  when: changed_resolv_conf.changed
+  tags: no_ci
+
+- name: restart network service
+  systemd:
+    name: NetworkManager.service
+    state: restarted
+  become: yes
+  when: changed_resolv_conf.changed
+  tags: no_ci
