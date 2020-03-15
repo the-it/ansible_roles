@@ -9,6 +9,8 @@
   version: 1.6.4
 - src: jaredhocutt.jetbrains_toolbox
   version: f5794ee625caf0d735c981e2dd71e4aee5343788
+- src: oefenweb.dropbox
+  version: v1.0.40
 - src: oefenweb.slack
   version: v3.1.2
 - src: sansible.golang
