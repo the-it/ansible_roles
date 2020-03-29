@@ -4,7 +4,6 @@
     - apt_update
     - catacomb
     - cdk
-    - chrome
     - cloc
     - cst
     - dateutils
