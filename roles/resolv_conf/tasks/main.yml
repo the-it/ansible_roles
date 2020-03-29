@@ -2,7 +2,10 @@
 - name: install resolv conv
   apt:
     name: resolvconf
+    state: present
   become: yes
+  # repair https://stackoverflow.com/questions/40877643/apt-get-install-in-ubuntu-16-04-docker-image-etc-resolv-conf-device-or-reso:
+  tags: no_ci
 
 - name: enable resolv conv service
   systemd:
