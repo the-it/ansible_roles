@@ -1,0 +1,6 @@
+---
+- name: apt
+  become: true
+  apt:
+    name: chromium-browser
+    state: present
