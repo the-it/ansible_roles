@@ -11,6 +11,7 @@
       nameserver 10.79.255.200
   become: yes
   register: changed_resolv_conf
+  tags: no_ci
 
 - name: restart resolv conv service
   systemd:
