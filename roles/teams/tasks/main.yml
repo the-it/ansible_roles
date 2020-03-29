@@ -1,0 +1,7 @@
+---
+- name: Install Teams
+  snap:
+    name: teams-for-linux
+  become: yes
+  # todo: needs systemd as daemon in testing :-(
+  tags: no_ci

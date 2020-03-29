@@ -22,9 +22,11 @@
     - neofetch
     - night_light
     - node_js
+    - otto_dns
     #- openvpn???
     - pycp
     - python_from_source
+    - resolv_conf
     - rdesktop
     - slack
     - telegram
