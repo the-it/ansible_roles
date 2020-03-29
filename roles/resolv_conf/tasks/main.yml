@@ -2,6 +2,7 @@
 - name: install resolv conv
   apt:
     name: resolvconf
+    state: present
   become: yes
 
 - name: enable resolv conv service
