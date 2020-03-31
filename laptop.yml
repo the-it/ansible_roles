@@ -28,6 +28,7 @@
     - resolv_conf
     - rdesktop
     - slack
+    - spotify
     - telegram
     - terminator
     - terraform
