@@ -2,3 +2,9 @@
 
   roles:
     - apt_update
+    - python_from_source
+    - role: git_clone
+      domain_prefix: "the-it."
+      git_repo: WS_THEbotIT
+      github_user: the-it
+      set_local_git_config: True

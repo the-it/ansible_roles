@@ -1,2 +1,4 @@
 ---
 repo_parent: "~/workspace"
+domain_prefix: ""
+set_local_git_config: False

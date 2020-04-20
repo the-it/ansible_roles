@@ -14,11 +14,28 @@
       debug: msg='GIT-Repo already exists. Nothing to do!'
       when: check_path.stat.exists
 
-    - git:
-        repo: 'https://github.com/{{ github_user }}/{{ git_repo }}.git'
+    - name: Cloning Repo git@{{ domain_prefix }}github.com:{{ github_user }}/{{ git_repo }}.git
+      git:
+        repo: 'git@{{ domain_prefix }}github.com:{{ github_user }}/{{ git_repo }}.git'
         dest: '{{ repo_parent }}/{{ git_repo }}'
         update: no
       when: check_path.stat.exists == false
+
+    - block:
+        - name: user name
+          git_config:
+            name: user.name
+            scope: local
+            repo: '{{ repo_parent }}/{{ git_repo }}'
+            value: "Erik Sommer"
+
+        - name: user email
+          git_config:
+            name: user.email
+            scope: local
+            repo: '{{ repo_parent }}/{{ git_repo }}'
+            value: "ersotech@posteo.de"
+      when: set_local_git_config
 
   tags:
     - git-repo
