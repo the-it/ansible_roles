@@ -1,0 +1,7 @@
+---
+- name: install wikibase-cli
+  npm:
+    name: wikibase-cli
+    global: yes
+    state: latest
+  become: true
