@@ -1,6 +1,7 @@
 - hosts: localhost
 
   roles:
+    - ansible
     - apt_update
     - catacomb
     - cdk

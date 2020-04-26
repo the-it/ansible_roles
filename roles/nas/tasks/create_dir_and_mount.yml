@@ -10,7 +10,7 @@
 - name: mount nas directories for {{ item }}
   mount:
     path: '/mnt/{{ item }}'
-    src: '192.168.2.162:/volume1/{{ item }}'
+    src: '192.168.178.21:/volume1/{{ item }}'
     fstype: nfs
     state: mounted
   become: yes

@@ -4,3 +4,8 @@
     name: ansible
     executable: pip3
   become: yes
+
+- name: sshpass
+  apt:
+    name: sshpass
+  become: yes
