@@ -1,4 +1,9 @@
 ---
+- name: Install nfs tools
+  apt:
+    name: nfs-common
+  become: yes
+
 - name: Create mount points for {{ item }}
   file:
     path: '/mnt/{{ item }}'
