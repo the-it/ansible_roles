@@ -8,7 +8,7 @@
   pip:
     requirements: "{{ lookup('env','HOME') }}/workspace/WS_THEbotIT/requirements.txt"
     virtualenv: "{{ lookup('env','HOME') }}/workspace/WS_THEbotIT/venv"
-    virtualenv_python: python3.8
+    virtualenv_python: "/usr/local/python-3.8.2/bin/python3.8"
   tags:
     - venv
   environment:
