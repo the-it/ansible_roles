@@ -6,6 +6,7 @@
   become: yes
 
 - name: Alias configuration
+  # todo: change to /etc/profile.de
   blockinfile:
     path: ~/.zshrc
     marker: "# {mark} add snap to path "

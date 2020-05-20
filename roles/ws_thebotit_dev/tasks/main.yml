@@ -13,3 +13,11 @@
     - venv
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_user_dir }}/.local/bin"
+
+- name: env for development
+  copy:
+    content: |
+      export WS_REAL_WIKI=TRUE
+      export WS_REAL_DATA=TRUE
+    dest: /etc/profile.d/ws_the_bot_it.sh
+  become: yes
