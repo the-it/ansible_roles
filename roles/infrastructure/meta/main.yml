@@ -1,0 +1,8 @@
+---
+dependencies:
+  - git
+  - role: git_clone
+    domain_prefix: "the-it."
+    git_repo: infrastructure
+    github_user: the-it
+    set_local_git_config: True

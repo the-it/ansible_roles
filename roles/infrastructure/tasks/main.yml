@@ -1,0 +1,44 @@
+---
+- name: create aws config folder
+  file:
+    path: "{{ lookup('env','HOME') }}/.aws"
+    state: directory
+    mode: '0755'
+
+- name: create credential file if not exists
+  file:
+    path: "{{ lookup('env','HOME') }}/.aws/credentials"
+    state: touch
+    mode: u=rw,g=r,o=r
+
+- name: add credentials for AWS account
+  blockinfile:
+    path: "{{ lookup('env','HOME') }}/.aws/credentials"
+    marker: "# {mark} ersotech credentials ANSIBLE"
+    block: |
+      [ersotech_aws_prd_1]
+      aws_access_key_id=abc
+      aws_secret_access_key=xyz
+
+      [ersotech_aws_tst_1]
+      aws_access_key_id=abc
+      aws_secret_access_key=xyz
+
+- name: create credential file if not exists
+  file:
+    path: "{{ lookup('env','HOME') }}/.aws/config"
+    state: touch
+    mode: u=rw,g=r,o=r
+
+- name: add credentials for AWS account
+  blockinfile:
+    path: "{{ lookup('env','HOME') }}/.aws/config"
+    marker: "# {mark} ersotech config ANSIBLE"
+    block: |
+      [ersotech_aws_prd_1]
+      region=eu-central-1
+      output=json
+
+      [ersotech_aws_tst_1]
+      region=eu-central-1
+      output=json

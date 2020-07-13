@@ -5,6 +5,8 @@
     - cloc
     - dropbox
     - gource
+    - infrastructure
+    - latex
     - nas
     - python_from_source
     - slack
