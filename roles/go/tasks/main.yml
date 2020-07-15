@@ -1,4 +1,0 @@
----
-- name: install go
-  import_role:
-    name: sansible.golang
