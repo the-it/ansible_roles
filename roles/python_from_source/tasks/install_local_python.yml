@@ -13,7 +13,7 @@
       remote_src: yes
 
   - name: Configure
-    shell: "./configure --prefix=/usr/local/python-{{ item }}"
+    shell: "./configure --prefix=/usr/local/python-{{ item }} --enable-optimizations"
     args:
       chdir: /tmp/Python-{{ item }}
 
@@ -33,5 +33,7 @@
       path: /tmp/Python-{{ item }}
       state: absent
     become: yes
-
   when: stat_result.stat.exists == False
+  rescue:
+    - debug:
+        msg: 'Was not able to install Python-{{ item }}. Probably download archive not available.'
