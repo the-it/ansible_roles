@@ -1,15 +1,15 @@
 ---
-- name: user name
-  git_config:
-    name: user.name
-    scope: global
-    value: "Erik Sommer"
-
-- name: user email
-  git_config:
-    name: user.email
-    scope: global
-    value: "ersotech@posteo.de"
+#- name: user name
+#  git_config:
+#    name: user.name
+#    scope: global
+#    value: "Erik Sommer"
+#
+#- name: user email
+#  git_config:
+#    name: user.email
+#    scope: global
+#    value: "ersotech@posteo.de"
 
 - name: make funky log alias
   git_config:

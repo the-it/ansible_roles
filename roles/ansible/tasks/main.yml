@@ -3,6 +3,7 @@
   pip:
     name: ansible
     executable: pip3
+    state: latest
   become: yes
 
 - name: sshpass

@@ -6,9 +6,8 @@
   become: yes
 
 - name: Alias configuration
-  # todo: change to /etc/profile.de
-  blockinfile:
-    path: ~/.zshrc
-    marker: "# {mark} add snap to path "
-    content: |
-      PATH=$PATH:/snap/bin
+  lineinfile:
+    create: yes
+    path: '/etc/profile.d/snap.sh'
+    line: 'PATH=$PATH:/snap/bin'
+  become: true

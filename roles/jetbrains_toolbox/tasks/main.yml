@@ -1,7 +1,7 @@
 ---
 - name: Install jmespath
   apt:
-    name: python-jmespath
+    name: python3-jmespath
     state: latest
   become: yes
 

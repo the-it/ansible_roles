@@ -1,7 +1,7 @@
 - name: create mount directories and mount nas there
   include_tasks: create_dir_and_mount.yml
   loop:
-    - 'data_erik'
+    - 'backup_erik'
     - 'media_erik'
     - 'shared'
     - 'temp_erik'

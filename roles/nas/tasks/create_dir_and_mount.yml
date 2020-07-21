@@ -9,7 +9,7 @@
     path: '/mnt/{{ item }}'
     state: directory
     mode: '0755'
-    owner: "{{ ansible_env.USER  }}"
+    owner: "esommer"
   become: yes
 
 - name: mount nas directories for {{ item }}

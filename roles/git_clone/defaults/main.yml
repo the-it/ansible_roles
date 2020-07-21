@@ -1,4 +1,5 @@
 ---
 repo_parent: "~/workspace"
-domain_prefix: ""
-set_local_git_config: False
+domain_prefix: "the-it."
+set_local_git_config: True
+github_user: "the-it"

@@ -1,0 +1,19 @@
+---
+- block:
+    - name: install docker
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - docker.io
+          - docker-compose
+
+    - name: add user to docker group
+      user:
+        name: "{{ ansible_env.USER  }}"
+        groups: docker
+        append: yes
+
+  become: true
+  tags:
+    - docker

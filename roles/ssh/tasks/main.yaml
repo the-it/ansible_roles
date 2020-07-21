@@ -1,0 +1,48 @@
+- name: install ssh client
+  become: true
+  apt:
+    name: openssh-client
+
+- name: Create .ssh folder
+  file:
+    path: "{{ lookup('env','HOME') }}/.ssh"
+    mode: 0700
+    state: directory
+
+- name: ensure config exists
+  copy:
+    content: ""
+    dest: "{{ lookup('env','HOME') }}/.ssh/config"
+    force: no
+    mode: u=rw,g=r,o=r
+
+- name: Edit ssh config
+  blockinfile:
+    path: "{{ lookup('env','HOME') }}/.ssh/config"
+    marker: "# {mark} ANSIBLE SSH SETTINGS ESOMMER"
+    insertafter: EOF
+    block: |
+      host *the-it.github.com
+        hostname github.com
+        IdentityFile ~/.ssh/id_rsa_the-it_work
+  register: edit_config
+
+- name: Copy public keys
+  copy:
+    src: "files/{{ item }}.pub"
+    dest: "{{ lookup('env','HOME') }}/.ssh/{{ item }}.pub"
+  with_items: "{{ keys }}"
+
+- name: Copy private keys
+  copy:
+    src: "files/{{ item }}"
+    dest: "{{ lookup('env','HOME') }}/.ssh/{{ item }}"
+    mode: 0600
+  with_items: "{{ keys }}"
+
+- name: restart ssh service
+  systemd:
+    state: restarted
+    name: ssh
+  become: yes
+  when: edit_config.changed

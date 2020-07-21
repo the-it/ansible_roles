@@ -3,14 +3,15 @@
   roles:
     - ansible
     - apt_update
-    - catacomb
+    - aws_cli
+#    - catacomb
     - cdk
     - cloc
     - cst
     - dateutils
     - docker
     - git
-    - googler
+#    - googler
     - gource
     - htop
     - jetbrains_toolbox
@@ -19,10 +20,9 @@
     - meld
     - moreutils
     - nas
-    - neofetch
+#    - neofetch
     - night_light
-    - node_js
-    - otto_dns
+    - nodejs
     #- openvpn???
     - pycp
     - python_from_source
@@ -30,9 +30,9 @@
     - rdesktop
     - slack
     - spotify
+    #- ssh
     - telegram
     - terminator
-    - terraform
     - tree
     - thunderbird
     #- scc later ... I have to learn some stuff about go package management

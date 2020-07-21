@@ -1,7 +1,0 @@
----
-dependencies:
-- aws_cli
-- curl
-- jq
-- unzip
-
