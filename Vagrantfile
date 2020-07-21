@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
   config.vm.define "devbox" do |dev|
-      config.vm.box = "chenhan/ubuntu-desktop-19.04"
+      config.vm.box = "chenhan/ubuntu-desktop-20.04"
       dev.vm.provider "virtualbox" do |vb|
         vb.gui = true
         vb.cpus = 2
