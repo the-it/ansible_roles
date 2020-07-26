@@ -1,7 +1,0 @@
----
-- name: install
-  apt:
-    name: meld
-    state: latest
-  register: installation
-  become: yes

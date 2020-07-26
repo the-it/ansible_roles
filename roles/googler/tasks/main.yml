@@ -1,7 +1,0 @@
----
-- name: install
-  apt:
-    name: googler
-    state: latest
-  register: installation
-  become: yes

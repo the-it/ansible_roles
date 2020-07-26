@@ -1,6 +1,0 @@
----
-- name: pip
-  pip:
-    executable: pip3
-    name: pycp
-  become: yes

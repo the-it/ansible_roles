@@ -27,7 +27,6 @@
     name: ubuntu-desktop
     state: latest
   become: yes
-  tags: no_ci
 
 - name: python3.7
   apt:

@@ -1,7 +1,0 @@
----
-
-- name: pexpect
-  pip:
-    name: pexpect
-  become: yes
-

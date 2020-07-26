@@ -1,7 +1,0 @@
----
-- name: install
-  apt:
-    name: dateutils
-    state: latest
-  register: installation
-  become: yes

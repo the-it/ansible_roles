@@ -1,7 +1,0 @@
----
-- name: install
-  apt:
-    name: moreutils
-    state: latest
-  register: installation
-  become: yes

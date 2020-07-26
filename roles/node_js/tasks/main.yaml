@@ -1,0 +1,16 @@
+- block:
+    - name: Install nodejs and npm
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - nodejs
+          - npm
+
+    - name: Update npm
+      npm:
+        name: npm
+        state: latest
+        global: yes
+
+  become: true

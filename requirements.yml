@@ -1,7 +1,4 @@
 # from galaxy
 - src: gantsign.pin-to-launcher
 - src: gantsign.visual-studio-code
-- src: geerlingguy.nodejs
-- src: jaredhocutt.jetbrains_toolbox
-- src: sansible.golang
 

@@ -18,4 +18,3 @@
   - name: Disable lock screen
     command: gsettings set org.gnome.desktop.lockdown disable-lock-screen 'true'
     when: lock_screen.stdout != 'true'
-  tags: no_ci
