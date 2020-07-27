@@ -7,6 +7,23 @@
     job: "/home/pi/WS_THEbotIT/service/starter.sh >> /home/pi/.wiki_bot/cron.log 2>&1"
   tags: no_ci
 
+- name: Check if path exists
+  stat:
+    path: "~/WS_THEbotIT"
+  register: check_path
+
+- name: Check Result
+  debug:
+    msg: 'GIT-Repo already exists. Nothing to do!'
+  when: check_path.stat.exists
+
+- name: Cloning Repo
+  git:
+    repo: 'https://github.com/the-it/WS_THEbotIT.git'
+    dest: "~/WS_THEbotIT"
+    update: no
+  when: check_path.stat.exists == false
+
 - name: Read Origin
   shell: "git remote -v"
   args:

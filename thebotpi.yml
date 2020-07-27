@@ -3,10 +3,8 @@
     - apt_update
     - bot_ws_thebotit
     - role: bot_python_from_source
-      python_version: "3.8.3"
+      python_version: "3.8.4"
     - role: geerlingguy.ntp
       ntp_timezone: Europe/Berlin
       become: yes
       tags: no_ci
-    - bot_pi-hole
-    - bot_jupyter
